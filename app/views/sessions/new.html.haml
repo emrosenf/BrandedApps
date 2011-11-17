@@ -1,0 +1,20 @@
+.row
+  .span8.offset4
+    - flash.each do |name, msg|
+      .alert-message{:class => name}
+        %a.close{:href => "#"} x
+        %p #{msg}
+    = form_tag sessions_path, {:class => "form-stacked"} do
+      %fieldset
+        %legend Login
+        .clearfix
+          %label Email
+          .input
+            %input.xlarge{:type=>"text"}
+        .clearfix
+          %label Password
+          .input
+            %input.xlarge{:type=>"password"}
+      .actions
+        %button.btn.primary{:type => "submit"} Login
+        %button.btn{:type => "reset"} Reset

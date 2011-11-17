@@ -1,0 +1,14 @@
+!!!
+%html
+  %head
+    %title Merchcraft
+    = stylesheet_link_tag "application"
+    = javascript_include_tag "http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.js"
+    = javascript_include_tag "application"    
+    -# = javascript_include_tag params[:controller]
+    = javascript_include_tag "http://connect.facebook.net/en_US/all.js#xfbml=1"
+    = csrf_meta_tags
+    = yield :head
+  %body{:class => params[:controller]}
+    #fb-root
+    = yield

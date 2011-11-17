@@ -1,0 +1,30 @@
+.row
+  .span8.offset4
+    - if @user.errors.any?
+      .alert-message.block-message.error
+        %a.close{:href => "#"} x
+        %p The form is invalid
+        %ul
+          - for message in @user.errors.full_messages
+            %li #{message}
+    - flash.each do |name, msg|
+      .alert-message{:class => name}
+        %a.close{:href => "#"} x
+        %p #{msg}
+    = form_for @user, {:class => "form-stacked"} do |f|
+      %fieldset
+        %legend Sign Up
+        .clearfix
+          %label Email
+          .input
+            %input.xlarge{:type=>"text", :name => "user[email]"}
+        .clearfix
+          %label Password
+          .input
+            %input.xlarge{:type=>"password", :name => "user[password]"}
+        .clearfix
+          %label Password Confirmation
+          .input
+            %input.xlarge{:type=>"password", :name => "user[password_confirmation]"}
+      .actions
+        %button.btn.primary{:type => "submit"} Sign Up

@@ -1,0 +1,66 @@
+// Place all the styles related to the  controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+.app-configuration {
+  position: relative;
+  img.app-preview { 
+    width: 360px;
+    border: 1px solid #ccc;
+  }
+  color: #ccc;
+  &.wikipedia {
+    color: #333;
+  }
+  span {
+    position: absolute;
+    left: 0;
+    font-family: Helvetica;
+    width: 360px;
+    text-align: center;
+  }
+  span.biz-greeting {
+    top: 3px;
+    font-size: 13px;
+    font-weight: 300;
+  }
+  &.wikipedia span.biz-greeting {
+    top: 5px;
+  }
+  span.biz-name {
+    top: 22px;
+    font-size: 16px;
+    font-weight: 500;
+  }
+  &.wikipedia span.biz-name {
+    font-size: 18px;
+    top: 29px;
+  }
+  
+  &.wikipedia .biz-logo-holder {
+    height: 42px;
+    width: 42px;
+    img.biz-logo-thumbnail {
+      height:42px;
+      width:42px;
+    }
+  }
+  .biz-logo-holder {
+    overflow: hidden;
+    height: 36px;
+    width: 36px;
+    position: absolute;
+    top: 5px;
+    left: 12px;
+
+    img.biz-logo-thumbnail {
+      height:36px;
+      width:36px;
+    }
+    &.wikipedia img.biz-logo-thumbnail {
+      height:42px;
+      width:42px;
+    }
+  }
+}

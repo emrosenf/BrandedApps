@@ -1,0 +1,192 @@
+.topbar
+  .fill
+    .container
+      %a.brand AppMakr
+      %ul.nav
+        %li
+          %a{:href => "how"} How
+      %p.account.pull-right
+        %a{:href=> login_url} Log In
+#signup
+  .container
+    .content
+      .page-header
+        %h1 App Configuration
+      .row
+        .span8
+          %h2 Preview  
+          .app-configuration
+            %img.app-preview{:src => "/assets/card_reader.png"} 
+            %span.biz-greeting Presented By
+            %span.biz-name Your Name Here
+            .biz-logo-holder
+              %img.biz-logo-thumbnail{:style => "height:36px;width:36px;"}
+        .span8
+          #slides
+            %form.form-stacked.slides_container{:method => "POST", :action => users_path, :enctype => "multipart/form-data"}
+              .step1
+                %h2 Step 1
+                %h3 Choose your App
+                %ul.media-grid.app-picker
+                  %li
+                    %a{:href => "#", :type => "card-reader", :rel => "twipsy", :title => "A digital card reader with a powerful LED light and magnifying glass. Perfect for reading menus in dark restaurants!", "data-placement" => "below"}
+                      %img.thumbnail{:src => "assets/card_reader.png", :width => 180}
+                      %h6 Card Reader
+                  %li
+                    %a{:href => "#", :type => "wikipedia", :rel => "twipsy", :title => "An advanced Wikipedia viewer. Supremely practical, gives the beholder the entire corpus of human knowledge.", "data-placement" => "below"}
+                      %img.thumbnail{:src => "/assets/wikibot.png", :width => 180}
+                      %h6 Wikipedia
+                .well
+                  %a.btn.primary.next.pull-right Next &rarr;
+              .step2
+                %h2 Step 2
+                %h3 Customize
+                %fieldset
+                  .clearfix
+                    %label Greeting
+                    .input
+                      .input-append
+                        %input.xlarge{:type=>"text", :name => "greeting", :value => "Presented By"}
+                        %label.add-on.active
+                          %input#greeting_cb{:type => "checkbox", :name => "greeting_active", :checked => true}
+                  .clearfix
+                    %label Business Name
+                    .input
+                      %input.xlarge{:type=>"text", :name => "business_name", :placeholder => "Your business name"}
+                  .clearfix
+                    %label Logo
+                    .input
+                      %input.xlarge{:type=>"file", :name => "logo_file"}
+                      %span.help-block Use a square image at least 60x60.
+                  -#
+                    .clearfix
+                      %label Crop Logo
+                      .input
+                        %img.biz-logo-edit{:src => "http://placehold.it/180x180"}
+                        %span.help-block Drag a square to crop the image
+                .well
+                  %a.btn.primary.prev.pull-left &larr; Back
+                  %a.btn.primary.next.pull-right Next &rarr;
+              .step3
+                %h2 Step 3
+                %h3 Create Account
+                %fieldset
+                  .clearfix
+                    %label Email Address
+                    .input
+                      %input.xlarge{:type=>"text", :name => "email"}
+                  .clearfix
+                    %label Password
+                    .input
+                      %input.xlarge{:type => "password", :name => "password"}
+                  .clearfix
+                    %label Confirm Password
+                    .input
+                      %input.xlarge{:type => "password", :name => "password_confirmation"}
+                      %span.help-block{:style => "display:none;"} Passwords must match
+                .well
+                  %a.btn.primary.prev.pull-left &larr; Back
+                  %a.btn.primary.submit.pull-right Create Account
+              -#
+                %h3 Business Information
+                %form.form-stacked
+                  %fieldset
+                    .clearfix
+                      %label Email Address
+                      .input
+                        %input.xlarge{:type=>"text", :name => "email"}
+                    .clearfix
+                      %label Password
+                      .input
+                        %input.xlarge{:type => "password", :name => "password"}
+                    .clearfix
+                      %label Confirm Password
+                      .input
+                        %input.xlarge{:type => "password", :name => "password_confirmation"}
+                -#
+                  %form.form-stacked
+                    %fieldset
+                      .clearfix
+                        %label Phone Number
+                        .input
+                          %input.xlarge{:type=>"tel", :name => "phone-number", :placeholder => "123-456-7890"}
+                      .clearfix
+                        %label Street Address
+                        .input
+                          %input.xlarge{:type => "text", :name => "address", :placeholder => "123 Sesame St."}
+                      .clearfix
+                        %label City
+                        .input
+                          %input.xlarge{:type => "text", :name => "city", :placeholder => "New York"}
+                      .clearfix
+                        %label State
+                        .input
+                          %select
+                            %option{:value => "AL"} Alabama 
+                            %option{:value => "AK"} Alaska 
+                            %option{:value => "AZ"} Arizona 
+                            %option{:value => "AR"} Arkansas 
+                            %option{:value => "CA"} California 
+                            %option{:value => "CO"} Colorado 
+                            %option{:value => "CT"} Connecticut 
+                            %option{:value => "DE"} Delaware 
+                            %option{:value => "DC"} District Of Columbia 
+                            %option{:value => "FL"} Florida 
+                            %option{:value => "GA"} Georgia 
+                            %option{:value => "HI"} Hawaii 
+                            %option{:value => "ID"} Idaho 
+                            %option{:value => "IL"} Illinois 
+                            %option{:value => "IN"} Indiana 
+                            %option{:value => "IA"} Iowa 
+                            %option{:value => "KS"} Kansas 
+                            %option{:value => "KY"} Kentucky 
+                            %option{:value => "LA"} Louisiana 
+                            %option{:value => "ME"} Maine 
+                            %option{:value => "MD"} Maryland 
+                            %option{:value => "MA"} Massachusetts 
+                            %option{:value => "MI"} Michigan 
+                            %option{:value => "MN"} Minnesota 
+                            %option{:value => "MS"} Mississippi 
+                            %option{:value => "MO"} Missouri 
+                            %option{:value => "MT"} Montana 
+                            %option{:value => "NE"} Nebraska 
+                            %option{:value => "NV"} Nevada 
+                            %option{:value => "NH"} New Hampshire 
+                            %option{:value => "NJ"} New Jersey 
+                            %option{:value => "NM"} New Mexico 
+                            %option{:value => "NY"} New York 
+                            %option{:value => "NC"} North Carolina 
+                            %option{:value => "ND"} North Dakota 
+                            %option{:value => "OH"} Ohio 
+                            %option{:value => "OK"} Oklahoma 
+                            %option{:value => "OR"} Oregon 
+                            %option{:value => "PA"} Pennsylvania 
+                            %option{:value => "RI"} Rhode Island 
+                            %option{:value => "SC"} South Carolina 
+                            %option{:value => "SD"} South Dakota 
+                            %option{:value => "TN"} Tennessee 
+                            %option{:value => "TX"} Texas 
+                            %option{:value => "UT"} Utah 
+                            %option{:value => "VT"} Vermont 
+                            %option{:value => "VA"} Virginia 
+                            %option{:value => "WA"} Washington 
+                            %option{:value => "WV"} West Virginia 
+                            %option{:value => "WI"} Wisconsin 
+                            %option{:value => "WY"} Wyoming
+                      .clearfix
+                        %label Zip Code
+                        .input
+                          %input.xlarge{:type => "text", :name => "zip", :placeholder => "12345"}
+                      .clearfix
+                        %label Twitter Account
+                        .input
+                          .input-prepend
+                            %span.add-on @
+                            %input.xlarge{:type=>"text", :name => "twitter", :placeholder => ""}
+                      .clearfix
+                        %label Website URL
+                        .input
+                          %input.xlarge{:type=>"text", :name => "website_url", :placeholder => "http://www.mywebsite.com"}
+                  .well
+                    %a.btn.primary.prev.pull-left &larr; Back
+                    %a.btn.primary.next.pull-right Next &rarr;
