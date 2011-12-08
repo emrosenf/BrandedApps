@@ -1,5 +1,15 @@
 class AjaxController < ApplicationController
   
+  def instance_lookup
+    instance = AppInstance.find params[:code]
+    retVal = {:status => 0}
+    if instance
+      retVal[:status = 1]
+      retVal[:app] = instance.params
+    end
+    render :json => retVal
+  end
+  
   def get_app_info
     app_instance = nil
     retVal = {}
