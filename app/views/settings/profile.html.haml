@@ -1,0 +1,117 @@
+.container
+  .content
+    %ul.breadcrumb
+      %li
+        %a Home
+        %span.divider /
+      %li 
+        %a Next page
+    .row
+      .span4
+        %h3 Account Settings
+        %ul.unstyled
+          %li.active
+            = link_to "Login", settings_login_path
+          %li.active
+            = link_to "Billing", settings_billing_path
+          %li.active
+            = link_to "Profile", settings_profile_path
+      .span12
+        - flash.each do |name, msg|
+          .alert-message.fade.in{:class => name, "data-alert" => "alert"}
+            %a.close{:href => "#"} x
+            %p #{msg}
+        .page-header
+          %h2 Profile
+          = form_tag(users_path, {:class => "form", :method => "POST", :enctype => "multipart/form-data"}) do
+            %fieldset
+              %legend Business Information
+              .clearfix
+                %label Company Name
+                .input
+                  %input.span5{:type => "text", :name => "address", :placeholder => "My Company, Inc."}
+              .clearfix
+                %label Street Address
+                .input
+                  %input.span5{:type => "text", :name => "address", :placeholder => "123 Sesame St."}
+              .clearfix
+                %label City
+                .input
+                  %input.span5{:type => "text", :name => "city", :placeholder => "New York"}
+              .clearfix
+                %label State
+                .input
+                  %select
+                    %option{:value => "AL"} Alabama 
+                    %option{:value => "AK"} Alaska 
+                    %option{:value => "AZ"} Arizona 
+                    %option{:value => "AR"} Arkansas 
+                    %option{:value => "CA"} California 
+                    %option{:value => "CO"} Colorado 
+                    %option{:value => "CT"} Connecticut 
+                    %option{:value => "DE"} Delaware 
+                    %option{:value => "DC"} District Of Columbia 
+                    %option{:value => "FL"} Florida 
+                    %option{:value => "GA"} Georgia 
+                    %option{:value => "HI"} Hawaii 
+                    %option{:value => "ID"} Idaho 
+                    %option{:value => "IL"} Illinois 
+                    %option{:value => "IN"} Indiana 
+                    %option{:value => "IA"} Iowa 
+                    %option{:value => "KS"} Kansas 
+                    %option{:value => "KY"} Kentucky 
+                    %option{:value => "LA"} Louisiana 
+                    %option{:value => "ME"} Maine 
+                    %option{:value => "MD"} Maryland 
+                    %option{:value => "MA"} Massachusetts 
+                    %option{:value => "MI"} Michigan 
+                    %option{:value => "MN"} Minnesota 
+                    %option{:value => "MS"} Mississippi 
+                    %option{:value => "MO"} Missouri 
+                    %option{:value => "MT"} Montana 
+                    %option{:value => "NE"} Nebraska 
+                    %option{:value => "NV"} Nevada 
+                    %option{:value => "NH"} New Hampshire 
+                    %option{:value => "NJ"} New Jersey 
+                    %option{:value => "NM"} New Mexico 
+                    %option{:value => "NY"} New York 
+                    %option{:value => "NC"} North Carolina 
+                    %option{:value => "ND"} North Dakota 
+                    %option{:value => "OH"} Ohio 
+                    %option{:value => "OK"} Oklahoma 
+                    %option{:value => "OR"} Oregon 
+                    %option{:value => "PA"} Pennsylvania 
+                    %option{:value => "RI"} Rhode Island 
+                    %option{:value => "SC"} South Carolina 
+                    %option{:value => "SD"} South Dakota 
+                    %option{:value => "TN"} Tennessee 
+                    %option{:value => "TX"} Texas 
+                    %option{:value => "UT"} Utah 
+                    %option{:value => "VT"} Vermont 
+                    %option{:value => "VA"} Virginia 
+                    %option{:value => "WA"} Washington 
+                    %option{:value => "WV"} West Virginia 
+                    %option{:value => "WI"} Wisconsin 
+                    %option{:value => "WY"} Wyoming
+              .clearfix
+                %label Postal / Zip Code
+                .input
+                  %input.span5{:type => "text", :name => "zip", :placeholder => "12345"}
+            %fieldset
+              %legend Contact Information
+              .clearfix
+                %label Phone Number
+                .input
+                  %input.span5{:type=>"tel", :name => "phone-number", :placeholder => "123-456-7890"}
+              .clearfix
+                %label Twitter Account
+                .input
+                  %input.span5{:type=>"text", :name => "twitter", :placeholder => "@myaccount"}
+              .clearfix
+                %label Website URL
+                .input
+                  %input.span5{:type=>"text", :name => "website_url", :placeholder => "http://www.mywebsite.com"}
+
+
+            .actions
+              %a.btn.primary Update

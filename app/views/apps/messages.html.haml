@@ -1,0 +1,47 @@
+.container{:id => params[:action]}
+  .content
+    .row
+      .span4
+        %h3 Your Application
+        %ul.unstyled
+          %li
+            = link_to "Dashboard", app_path(@instance)
+          %li
+            = link_to "Messages", messages_app_path(@instance)
+          %li
+            = link_to "Settings", settings_app_path(@instance)
+          %li
+            = link_to "Analytics", analytics_app_path(@instance)
+      .span12
+        - flash.each do |name, msg|
+          .alert-message.fade.in{:class => name, "data-alert" => "alert"}
+            %a.close{:href => "#"} x
+            %p #{msg}
+        .page-header
+          %h2 Messages
+          %ul.tabs{"data-tabs" => "tabs"}
+            %li.active
+              %a{:href => "#everyone"} Send to Everyone
+            %li
+              %a{:href => "#individual"} Send to Individuals
+          .tab-content
+            .tab-pane.active#everyone
+              = form_tag(messages_create_app_path, {:class => "form-stacked", :method => "POST"}) do
+                %fieldset
+                  %legend New Message
+                  .clearfix
+                    .input
+                      %textarea.span10{:name => "alert", :placeholder => "Type your message here. It will be sent to everyone who has your app installed."}
+                      %span.help-block Your message can be at most 200 characters long
+                .actions
+                  %a.btn.primary.submit Send Message
+            .tab-pane#individual
+          %hr
+          %h3 Sent Messages
+          %table.bordered-table.zebra-striped
+            %thead
+              %tr
+                %th Recipients
+                %th Message
+                %th Time Sent
+            %tbody

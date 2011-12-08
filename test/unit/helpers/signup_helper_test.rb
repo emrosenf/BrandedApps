@@ -1,4 +1,4 @@
 require 'test_helper'
 
-class SignupHelperTest < ActionView::TestCase
+class HelperTest < ActionView::TestCase
 end

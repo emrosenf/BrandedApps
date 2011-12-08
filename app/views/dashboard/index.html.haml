@@ -1,0 +1,46 @@
+.topbar
+  .fill
+    .container
+      %a.brand AppMakr
+      %ul.nav.secondary-nav
+        %li
+          %a{:href => "how"} Apps
+        %li.dropdown{"data-dropdown" => "dropdown"}
+          %a.dropdown-toggle{:href => "#"} Account
+          %ul.dropdown-menu
+            %li
+              %a{:href => "#"} Settings
+            %li
+              %a{:href=> logout_url} Log Out
+.container
+  .row
+    .span4
+      %ul.tabs
+        %li.active
+          = link_to "/apps", "Apps"
+        %li
+          Account
+        %li
+    .span12
+      - flash.each do |name, msg|
+        .alert-message.fade.in{:class => name, "data-alert" => "alert"}
+          %a.close{:href => "#"} x
+          %p #{msg}
+      .page-header
+        %h1 Choose Your Plan
+      #plans.row
+        .plan.span4
+          %h2.plan-title Starter
+          %div
+            %p FREE
+            %button.btn.primary Sign Up Now
+        .plan.span4
+          %h2.plan-title Basic
+          %div
+            %p $14.99/mo
+            %button.btn.primary Sign Up Now
+        .plan.span4
+          %h2.plan-title Premium
+          %div
+            %p $29.99/mo
+            %button.btn.primary Sign Up Now

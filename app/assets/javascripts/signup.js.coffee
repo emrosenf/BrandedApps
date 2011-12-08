@@ -26,7 +26,13 @@ jQuery ->
   
   $('ul.app-picker a').click((e) ->
     form = $(this).parents('form')
+    form.find('input[name=app_id]').remove()
     type = $(this).attr('type')  
+    idx = type.indexOf('-')
+    app_id = type.slice(0,idx)
+    form.append("<input type='hidden' name='app_id' value='#{app_id}'></input>")
+    
+    type = type.slice(idx+1)
     $('.app-configuration').removeClass('card-reader wikipedia').addClass(type)
     child_img = $(this).find('img')
     $('img.app-preview').attr('src', child_img.attr('src'))
@@ -49,7 +55,7 @@ jQuery ->
   
   jcrop_api = null
   
-  $('.btn.submit').click( (e) ->
+  $('.signup .btn.submit').click( (e) ->
     $(this).parents('form').submit()
     return false;
   )

@@ -1,7 +1,13 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/Fixtures.html
 
 one:
+  name: MyString
+  description: MyString
   params: MyText
+  image: MyString
 
 two:
+  name: MyString
+  description: MyString
   params: MyText
+  image: MyString

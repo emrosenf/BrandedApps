@@ -1,0 +1,14 @@
+development:
+  domain: dev.dev:3000
+  fb_token: 125923327498317
+  fb_secret: 46fc47e39a1d82e72295e7cd25666115
+  s3_bucket: canvas.merchcraft.com
+
+test:
+  domain: test.host
+
+production:
+  domain: merchcraft.herokuapp.com
+  fb_token: 247609275267551
+  fb_secret: a0a9d63071f30233ab52733dd2ce14a7
+  s3_bucket: s3.merchcraft.com

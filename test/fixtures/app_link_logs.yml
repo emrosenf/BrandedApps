@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/Fixtures.html
+
+one:
+  app_instance: 
+  uid: MyString
+  time_installed: 2011-11-29 22:44:57
+
+two:
+  app_instance: 
+  uid: MyString
+  time_installed: 2011-11-29 22:44:57

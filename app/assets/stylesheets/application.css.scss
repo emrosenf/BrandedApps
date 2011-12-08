@@ -8,6 +8,25 @@
 
 @import "bootstrap"; /* Use this to get all of Bootstrap's @mixins and $variables */
 
+body {
+  &.has_topbar {
+    padding-top: 40px;
+  }
+}
+
+.right-divider {
+  border-right: 1px solid #eee;
+  margin-right: 0;
+  padding-right: -1px;
+}
+
+.plan {
+  .plan-title {
+    text-align: center;
+    font-size: 30px;
+    background-color: #ccc;
+  }
+}
 
 .slides_container {
   width:470px;

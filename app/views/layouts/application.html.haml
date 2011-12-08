@@ -9,6 +9,6 @@
     = javascript_include_tag "http://connect.facebook.net/en_US/all.js#xfbml=1"
     = csrf_meta_tags
     = yield :head
-  %body{:class => params[:controller]}
+  %body.has_topbar{:class => params[:controller]}
     #fb-root
     = yield

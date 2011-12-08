@@ -1,0 +1,26 @@
+.container
+  .content
+    %ul.breadcrumb
+      %li
+        %a Home
+        %span.divider /
+      %li 
+        %a Next page
+    .row
+      .span4
+        %h3 Account Settings
+        %ul.unstyled
+          %li.active
+            = link_to "Login", settings_login_path
+          %li.active
+            = link_to "Billing", settings_billing_path
+          %li.active
+            = link_to "Profile", settings_profile_path
+      .span12
+        - flash.each do |name, msg|
+          .alert-message.fade.in{:class => name, "data-alert" => "alert"}
+            %a.close{:href => "#"} x
+            %p #{msg}
+        .page-header
+          %h2 Billing
+          %p You are currently on the Free plan

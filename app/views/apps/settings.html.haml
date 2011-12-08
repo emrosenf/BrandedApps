@@ -1,0 +1,157 @@
+.container
+  .content
+    .row
+      .span4
+        %h3 Your Application
+        %ul.unstyled
+          %li
+            = link_to "Dashboard", app_path(@instance)
+          %li
+            = link_to "Messages", messages_app_path(@instance)
+          %li
+            = link_to "Settings", settings_app_path(@instance)
+          %li
+            = link_to "Analytics", analytics_app_path(@instance)
+      .span12
+        - flash.each do |name, msg|
+          .alert-message.fade.in{:class => name, "data-alert" => "alert"}
+            %a.close{:href => "#"} x
+            %p #{msg}
+        .page-header
+          %h2 Settings
+          %ul.tabs{"data-tabs" => "tabs"}
+            %li.active
+              %a{:href => "#home"} Main Screen
+            %li
+              %a{:href => "#info"} Info Panel
+          .tab-content
+            .tab-pane.active#home
+              .row
+                .span5
+                  = image_tag @instance.app.canvas, {:width => "250"}
+                .span7
+                  = form_tag(users_path, {:class => "form-stacked", :method => "POST", :enctype => "multipart/form-data"}) do
+                    %fieldset
+                      %legend Main Screen
+                      .clearfix
+                        %label Greeting
+                        .input
+                          .input-append
+                            %input.xlarge{:type=>"text", :name => "greeting", :value => @instance.greeting}
+                            %label.add-on{:class => @instance.greeting_on.is_checked? ? "active" : ""}
+                              %input#greeting_cb{:type => "checkbox", :name => "greeting_on", :checked => @instance.greeting_on.is_checked?}
+                      .clearfix
+                        %label Business Name
+                        .input
+                          %input.xlarge{:type=>"text", :name => "business_name", :placeholder => @instance.business_name, :value => @instance.business_name}
+                      .clearfix
+                        %label Logo
+                        .input
+                          %input.xlarge{:type=>"file", :name => "logo_file"}
+                          %span.help-block Use a square image at least 60x60.
+                      .clearfix
+                        %label Link Address
+                        .input
+                          %span http://merchcraft.com/l/
+                          %input.large{:style => "display:inline;", :type => "text", :name => "path", :placeholder => "MyBusinessName", :value => @instance.path}
+                          %span.help-block This will be a link that you can send to your customers
+                    .actions
+                      %a.btn.primary Save Settings
+            .tab-pane#info
+              .row
+                .span5
+                  = image_tag @instance.app.canvas, {:width => "250"}
+                .span7
+                  = form_tag(users_path, {:class => "form-stacked", :method => "POST", :enctype => "multipart/form-data"}) do
+                    .clearfix
+                      %label Link Address
+                      .input
+                        %span http://merchcraft.com/l/
+                        %input.span3{:style => "display:inline;", :type => "text", :name => "path", :placeholder => "MyBusinessName"}
+                        %span.help-block This will be a link that you can send to your customers
+                    .clearfix
+                      %label Twitter
+                      .input
+                        .input-prepend
+                          %input.span4{:type=>"text", :name => "twitter", :placeholder => "@accountname", :value => @instance.twitter.format_twitter}
+                          %label.add-on.active
+                            %input{:type => "checkbox", :name => "twitter_on", :checked => true}
+                        %span.help-block If checked, users will be asked to follow you on Twitter.
+                    .clearfix
+                      %label Contact E-Mail Address
+                      .input
+                        .input-prepend
+                          %input.span4{:type=>"text", :name => "email_address", :placeholder => "me@mycompany.com", :value => current_user.email}
+                          %label.add-on{:class => @instance.email_on.checkbox_class}
+                            %input{:type => "checkbox", :name => "email_on", :checked => @instance.email_on.is_checked?}
+                        %span.help-block If checked, users will be able to send emails to this address.
+                    .clearfix
+                      %label Phone Number
+                      .input
+                        .input-prepend
+                          %input.span4{:type=>"text", :name => "phone", :placeholder => "123-456-7890", :value => @instance.phone.format_phone}
+                          %label.add-on{:class => @instance.phone_on.checkbox_class}
+                            %input{:type => "checkbox", :name => "phone_on", :checked => @instance.phone_on.is_checked?}
+                        %span.help-block If checked, users will be able to call this number.
+                    .clearfix
+                      %label Business Address
+                      .input
+                        %input.span3{:type => "text", :name => "address", :placeholder => "Address", :value => @instance.address}
+                      .input{:style => "margin-top: 10px"}
+                        %input.span2{:type => "text", :name => "city", :placeholder => "City", :value => @instance.city}
+                        %select.span1{:style => "width: 50px", :name => "state", :value => @instance.state}
+                          %option{:value => "AL"} AL
+                          %option{:value => "AK"} AK
+                          %option{:value => "AZ"} AZ
+                          %option{:value => "AR"} AR
+                          %option{:value => "CA"} CA
+                          %option{:value => "CO"} CO
+                          %option{:value => "CT"} CT
+                          %option{:value => "DE"} DE
+                          %option{:value => "DC"} DC
+                          %option{:value => "FL"} FL
+                          %option{:value => "GA"} GA
+                          %option{:value => "HI"} HI
+                          %option{:value => "ID"} ID
+                          %option{:value => "IL"} IL
+                          %option{:value => "IN"} IN
+                          %option{:value => "IA"} IA
+                          %option{:value => "KS"} KS
+                          %option{:value => "KY"} KY
+                          %option{:value => "LA"} LA
+                          %option{:value => "ME"} ME
+                          %option{:value => "MD"} MD
+                          %option{:value => "MA"} MA
+                          %option{:value => "MI"} MI
+                          %option{:value => "MN"} MN
+                          %option{:value => "MS"} MS
+                          %option{:value => "MO"} MO
+                          %option{:value => "MT"} MT
+                          %option{:value => "NE"} NE
+                          %option{:value => "NV"} NV
+                          %option{:value => "NH"} NH
+                          %option{:value => "NJ"} NJ
+                          %option{:value => "NM"} NM
+                          %option{:value => "NY"} NY
+                          %option{:value => "NC"} NC
+                          %option{:value => "ND"} ND
+                          %option{:value => "OH"} OH
+                          %option{:value => "OK"} OK
+                          %option{:value => "OR"} OR
+                          %option{:value => "PA"} PA
+                          %option{:value => "RI"} RI
+                          %option{:value => "SC"} SC
+                          %option{:value => "SD"} SD
+                          %option{:value => "TN"} TN
+                          %option{:value => "TX"} TX
+                          %option{:value => "UT"} UT
+                          %option{:value => "VT"} VT
+                          %option{:value => "VA"} VA
+                          %option{:value => "WA"} WA
+                          %option{:value => "WV"} WV
+                          %option{:value => "WI"} WI
+                          %option{:value => "WY"} WY
+                        %input.span2{:type => "text", :name => "zip", :placeholder => "Zip", :value => @instance.zip}
+                        %span.help-block Users can get directions to your business from within the app
+                    .actions
+                      %a.btn.primary Save Settings

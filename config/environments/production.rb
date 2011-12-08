@@ -57,4 +57,12 @@ Appdoc::Application.configure do
 
   # Send deprecation notices to registered listeners
   config.active_support.deprecation = :notify
+  
+  PAPERCLIP_STORAGE_OPTIONS = {
+    :storage => :s3,
+    :s3_credentials => Rails.root.join("config/s3.yml"),
+    :path => ":attachment/:id/:style.:extension",
+    :bucket => APP_CONFIG[:s3_bucket],
+    :s3_headers => {'Expires' => 1.year.from_now.httpdate}
+  }
 end

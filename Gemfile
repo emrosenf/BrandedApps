@@ -8,6 +8,11 @@ gem 'rails', '3.1.0'
 gem 'haml'
 gem 'haml-rails'
 
+gem 'apn_on_rails', :git => 'https://github.com/timsu/apn_on_rails.git'
+
+gem 'paperclip'
+gem 'aws-s3', :require => 'aws/s3'
+
 gem 'bootstrap-sass', '1.4.0'
 
 # Gems used only for assets and not required

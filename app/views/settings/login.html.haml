@@ -1,0 +1,52 @@
+.container
+  .content
+    %ul.breadcrumb
+      %li
+        %a Home
+        %span.divider /
+      %li 
+        %a Next page
+    .row
+      .span4
+        %h3 Account Settings
+        %ul.unstyled
+          %li.active
+            = link_to "Login", settings_login_path
+          %li.active
+            = link_to "Billing", settings_billing_path
+          %li.active
+            = link_to "Profile", settings_profile_path
+      .span12
+        - flash.each do |name, msg|
+          .alert-message.fade.in{:class => name, "data-alert" => "alert"}
+            %a.close{:href => "#"} x
+            %p #{msg}
+        .page-header
+          %h2 Login
+          = form_tag(users_path, {:class => "form", :method => "POST", :enctype => "multipart/form-data"}) do
+            %fieldset
+              %legend Login Information
+              .clearfix
+                %label Your Name
+                .input
+                  %input.span3{:type=>"text", :name => "first_name", :placeholder => "First Name"}
+                  %input.span3{:type=>"text", :name => "last_name", :placeholder => "Last Name"}
+              .clearfix
+                %label Email Address
+                .input
+                  %input.span5{:type=>"text", :name => "email", :placeholder => "me@domain.com", :value => current_user.email}
+              .clearfix
+                %label Change Password
+                .input
+                  %input.span3{:type => "password", :name => "new_password"}
+                  %input.span3{:type => "password", :name => "new_password_confirmation"}
+                  %span.help-block{:style => "display:none;"} Passwords must match
+              .clearfix
+                %label Current Password
+                .input
+                  %input.span5{:type => "password", :name => "password"}
+                  %span.help-block{:style => "display:none;"} Passwords must match
+        
+
+            .actions
+              %a.btn.primary Update

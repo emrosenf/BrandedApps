@@ -1,0 +1,28 @@
+!!!
+%html
+  %head
+    %title Merchcraft
+    = stylesheet_link_tag "application"
+    = javascript_include_tag "http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.js"
+    = javascript_include_tag "application"    
+    -# = javascript_include_tag params[:controller]
+    = javascript_include_tag "http://connect.facebook.net/en_US/all.js#xfbml=1"
+    = csrf_meta_tags
+    = yield :head
+  %body.has_topbar{:class => params[:controller]}
+    #fb-root
+    .topbar
+      .fill
+        .container
+          %a.brand{:href => root_path} AppMakr
+          %ul.nav.secondary-nav
+            %li
+              %a{:href => apps_path} Apps
+            %li.dropdown{"data-dropdown" => "dropdown"}
+              %a.dropdown-toggle{:href => "#"} Account
+              %ul.dropdown-menu
+                %li
+                  %a{:href => settings_login_path} Settings
+                %li
+                  %a{:href=> logout_url} Log Out
+    = yield

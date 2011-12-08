@@ -1,12 +1,34 @@
 Appdoc::Application.routes.draw do
-  
 
+  resources :apps do
+    member do
+      get 'analytics'
+      get 'settings'
+      get 'messages'
+      get 'complete_setup'
+      post 'complete_setup' => "apps#post_complete_setup", :as => "finalize"
+      post 'messages' => "apps#messages_create", :as => "messages_create"
+    end
+  end
+  
+  namespace :settings do
+    get 'login'
+    get 'profile'
+    get 'billing'
+  end
+  
+  get "dashboard/index"
+
+  match "ajax/:action(/:id)", :controller => "ajax", :via => [:get, :post]
   get "signup" => "signup#index", :as => "signup"
   
   post "signup/create" => "signup#create", :as => "signup_create"
+  get "signup/choose" => "signup#choose", :as => "signup_choose"
   get "logout" => "sessions#destroy", :as => "logout"
   get "login" => "sessions#new", :as => "login"
-  #get "signup" => "users#new", :as => "signup"
+  
+  get "l/:id" => "ajax#app_link"
+  
   resources :users
   resources :sessions
 

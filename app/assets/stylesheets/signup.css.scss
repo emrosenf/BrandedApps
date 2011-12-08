@@ -2,7 +2,74 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+#app-info-screen {
+  position: relative;
+  span {
+    position: absolute;
+    left: 70px;
+    font-family: Helvetica;
+    width: 167px;
+    text-align: center;
+  }
+  img {
+    width: 256px;
+  }
+  span.biz-name {
+    top: 55px;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 1.2;
+    color: #ccc;
+  }
+  .biz-logo-holder {
+    overflow: hidden;
+    height: 48px;
+    width: 48px;
+    position: absolute;
+    top: 51px;
+    left: 12px;
 
+    img.biz-logo-thumbnail {
+      height:48px;
+      width:48px;
+    }
+  }
+}
+
+
+/*
+#app-info-screen {
+  position: relative;
+  span {
+    position: absolute;
+    left: 70px;
+    font-family: Helvetica;
+    width: 220px;
+    text-align: center;
+  }
+  span.biz-name {
+    top: 66px;
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 1.2;
+    color: #ccc;
+  }
+  .biz-logo-holder {
+    overflow: hidden;
+    height: 60px;
+    width: 60px;
+    position: absolute;
+    top: 55px;
+    left: 12px;
+
+    img.biz-logo-thumbnail {
+      height:60px;
+      width:60px;
+    }
+  }
+}
+*/
+/*
 .app-configuration {
   position: relative;
   img.app-preview { 
@@ -57,6 +124,69 @@
     img.biz-logo-thumbnail {
       height:36px;
       width:36px;
+    }
+    &.wikipedia img.biz-logo-thumbnail {
+      height:42px;
+      width:42px;
+    }
+  }
+}*/
+
+.app-configuration {
+  position: relative;
+  img.app-preview { 
+    width: 288px;
+    border: 1px solid #ccc;
+  }
+  color: #ccc;
+  &.wikipedia {
+    color: #333;
+  }
+  span {
+    position: absolute;
+    left: 0;
+    font-family: Helvetica;
+    width: 288px;
+    text-align: center;
+  }
+  span.biz-greeting {
+    top: 2px;
+    font-size: 11px;
+    font-weight: 300;
+  }
+  &.wikipedia span.biz-greeting {
+    top: 5px;
+    font-size: 13px;
+  }
+  span.biz-name {
+    top: 19px;
+    font-size: 15px;
+    font-weight: 500;
+  }
+  &.wikipedia span.biz-name {
+    font-size: 17px;
+    top: 29px;
+  }
+  
+  &.wikipedia .biz-logo-holder {
+    height: 42px;
+    width: 42px;
+    img.biz-logo-thumbnail {
+      height:42px;
+      width:42px;
+    }
+  }
+  .biz-logo-holder {
+    overflow: hidden;
+    height: 32px;
+    width: 32px;
+    position: absolute;
+    top: 5px;
+    left: 12px;
+
+    img.biz-logo-thumbnail {
+      height:32px;
+      width:32px;
     }
     &.wikipedia img.biz-logo-thumbnail {
       height:42px;

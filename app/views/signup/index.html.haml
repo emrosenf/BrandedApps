@@ -22,20 +22,17 @@
             .biz-logo-holder
               %img.biz-logo-thumbnail{:style => "height:36px;width:36px;"}
         .span8
-          #slides
-            %form.form-stacked.slides_container{:method => "POST", :action => users_path, :enctype => "multipart/form-data"}
+          = form_tag(users_path, {:id => "slides", :class => "form-stacked slides_container", :method => "POST", :enctype => "multipart/form-data"}) do
+            .slides_container
               .step1
                 %h2 Step 1
                 %h3 Choose your App
                 %ul.media-grid.app-picker
-                  %li
-                    %a{:href => "#", :type => "card-reader", :rel => "twipsy", :title => "A digital card reader with a powerful LED light and magnifying glass. Perfect for reading menus in dark restaurants!", "data-placement" => "below"}
-                      %img.thumbnail{:src => "assets/card_reader.png", :width => 180}
-                      %h6 Card Reader
-                  %li
-                    %a{:href => "#", :type => "wikipedia", :rel => "twipsy", :title => "An advanced Wikipedia viewer. Supremely practical, gives the beholder the entire corpus of human knowledge.", "data-placement" => "below"}
-                      %img.thumbnail{:src => "/assets/wikibot.png", :width => 180}
-                      %h6 Wikipedia
+                  - @apps.each do |t|
+                    %li
+                      %a{:href => "#", :type => "#{t.id}-#{t.name.downcase!.gsub(/ /, '-')}", :rel => "twipsy", :title => t.description, "data-placement" => "below"}
+                        %img.thumbnail{:src => t.canvas.url, :width => 192}
+                        %h6 #{t.name}
                 .well
                   %a.btn.primary.next.pull-right Next &rarr;
               .step2
@@ -60,6 +57,13 @@
                       %span.help-block Use a square image at least 60x60.
                   -#
                     .clearfix
+                      %label Link Address
+                      .input
+                        %span http://merchcraft.com/l/
+                        %input.large{:style => "display:inline;", :type => "text", :name => "path", :placeholder => "MyBusinessName"}
+                        %span.help-block This will be a link that you can send to your customers
+                  
+                    .clearfix
                       %label Crop Logo
                       .input
                         %img.biz-logo-edit{:src => "http://placehold.it/180x180"}
@@ -69,6 +73,49 @@
                   %a.btn.primary.next.pull-right Next &rarr;
               .step3
                 %h2 Step 3
+                -#
+                  %h3 Contact Information
+                  .clearfix
+                    %label Twitter
+                    .input
+                      .input-prepend
+                        %input.span4{:type=>"text", :name => "twitter", :placeholder => "@accountname"}
+                        %label.add-on
+                          %input{:type => "checkbox", :name => "allow_twitter"}
+                      %span.help-block If checked, users will be asked to follow you on Twitter.
+                  .clearfix
+                    %label Contact E-Mail Address
+                    .input
+                      .input-prepend
+                        %input.span4{:type=>"text", :name => "email_address", :placeholder => "me@mycompany.com"}
+                        %label.add-on
+                          %input{:type => "checkbox", :name => "allow_email"}
+                      %span.help-block If checked, users will be able to send emails to this address.
+                  .clearfix
+                    %label Phone Number
+                    .input
+                      .input-prepend
+                        %input.span4{:type=>"text", :name => "phone", :placeholder => "123-456-7890"}
+                        %label.add-on
+                          %input{:type => "checkbox", :name => "allow_phone"}
+                      %span.help-block If checked, users will be able to call this number.
+                  %fieldset
+                    %legend Google Maps
+                    .clearfix
+                      .input
+                        %ul.inputs-list
+                          %li
+                            %label
+                              %input{:type => "checkbox", :name => "allow_twitter",}
+                              %span Allow users to follow you on twitter
+                    .clearfix
+                      .input
+                        .input-prepend
+                          %span.add-on @
+                          %input.span5{:type=>"text", :name => "twitter", :placeholder => "twitteraccount"}
+                  .well
+                    %a.btn.primary.prev.pull-left &larr; Back
+                    %a.btn.primary.next.pull-right Next &rarr;
                 %h3 Create Account
                 %fieldset
                   .clearfix
