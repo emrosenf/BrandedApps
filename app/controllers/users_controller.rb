@@ -14,8 +14,8 @@ class UsersController < ApplicationController
       instance.user = @user
       instance.app = app
       instance.banner = params[:logo_file]
-      instance.params = {:greeting => params[:greeting], :greeting_on => params[:greeting_on], 
-        :business_name => params[:business_name]}.to_json
+      syms = [:greeting, :greeting_on, :business_name]
+      syms.each {|s| instance.send("#{s.to_s}=", params[s])}
       instance.save
       session[:user_id] = @user.id
       flash[:success] = "Congratulations! Your account has been created."
