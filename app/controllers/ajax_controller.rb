@@ -4,7 +4,7 @@ class AjaxController < ApplicationController
     instance = AppInstance.find params[:code]
     retVal = {:status => 0}
     if instance
-      retVal[:status = 1]
+      retVal[:status] = 1
       retVal[:app] = instance.params
     end
     render :json => retVal
