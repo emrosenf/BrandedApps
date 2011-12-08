@@ -6,7 +6,9 @@ class AjaxController < ApplicationController
     if instance
       retVal[:status] = 1
       retVal[:app] = instance.params
+      retVal[:app][:banner] = instance.banner.url
       retVal[:app].each {|k, v| retVal[:app][k] = 0 unless v}
+      
     end
     render :json => retVal
   end
