@@ -48,7 +48,7 @@ class AppsController < ApplicationController
   end
   
   def messages_create
-    devices = APN::Device.find_by_app_id @instance.id
+    devices = APN::Device.find_all_by_app_id @instance.id
     devices.each do |d|
       notif = APN::Notification.new
       notif.alert = params[:alert]
