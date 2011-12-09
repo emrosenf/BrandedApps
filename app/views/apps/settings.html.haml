@@ -1,4 +1,4 @@
-.container
+.container{:id => params[:action]}
   .content
     .row
       .span4
@@ -13,10 +13,11 @@
           %li
             = link_to "Analytics", analytics_app_path(@instance)
       .span12
-        - flash.each do |name, msg|
-          .alert-message.fade.in{:class => name, "data-alert" => "alert"}
-            %a.close{:href => "#"} x
-            %p #{msg}
+        #flash-messages
+          - flash.each do |name, msg|
+            .alert-message.fade.in{:class => name, "data-alert" => "alert"}
+              %a.close{:href => "#"} x
+              %p #{msg}
         .page-header
           %h2 Settings
           %ul.tabs{"data-tabs" => "tabs"}
@@ -28,9 +29,14 @@
             .tab-pane.active#home
               .row
                 .span5
-                  = image_tag @instance.app.canvas, {:width => "250"}
+                  #app-configuration-small
+                    = image_tag @instance.app.canvas, {:width => "256", :class => "app-preview"}
+                    %span.biz-greeting #{@instance.greeting}
+                    %span.biz-name #{@instance.business_name}
+                    .biz-logo-holder
+                      = image_tag @instance.banner.url, {:class => "biz-logo-thumbnail"}
                 .span7
-                  = form_tag(users_path, {:class => "form-stacked", :method => "POST", :enctype => "multipart/form-data"}) do
+                  = form_tag(app_path(@instance), {:class => "form-stacked", :method => "PUT", :enctype => "multipart/form-data"}) do
                     %fieldset
                       %legend Main Screen
                       .clearfix
@@ -56,13 +62,17 @@
                           %input.large{:style => "display:inline;", :type => "text", :name => "path", :placeholder => "MyBusinessName", :value => @instance.path}
                           %span.help-block This will be a link that you can send to your customers
                     .actions
-                      %a.btn.primary Save Settings
+                      %a.btn.primary.submit Save Settings
             .tab-pane#info
               .row
                 .span5
-                  = image_tag @instance.app.canvas, {:width => "250"}
+                  #app-info-screen
+                    = image_tag "app_info_table.png", {:width => "256"}
+                    %span.biz-name #{@instance.business_name}
+                    .biz-logo-holder
+                      = image_tag @instance.banner.url, {:class => "biz-logo-thumbnail"}
                 .span7
-                  = form_tag(users_path, {:class => "form-stacked", :method => "POST", :enctype => "multipart/form-data"}) do
+                  = form_tag(app_path, {:class => "form-stacked", :method => "PUT", :enctype => "multipart/form-data"}) do
                     .clearfix
                       %label Link Address
                       .input
@@ -81,7 +91,7 @@
                       %label Contact E-Mail Address
                       .input
                         .input-prepend
-                          %input.span4{:type=>"text", :name => "email_address", :placeholder => "me@mycompany.com", :value => current_user.email}
+                          %input.span4{:type=>"text", :name => "email", :placeholder => "me@mycompany.com", :value => current_user.email}
                           %label.add-on{:class => @instance.email_on.checkbox_class}
                             %input{:type => "checkbox", :name => "email_on", :checked => @instance.email_on.is_checked?}
                         %span.help-block If checked, users will be able to send emails to this address.
@@ -100,6 +110,7 @@
                       .input{:style => "margin-top: 10px"}
                         %input.span2{:type => "text", :name => "city", :placeholder => "City", :value => @instance.city}
                         %select.span1{:style => "width: 50px", :name => "state", :value => @instance.state}
+                          %option{:value => @instance.state, :selected => "selected"} #{@instance.state}
                           %option{:value => "AL"} AL
                           %option{:value => "AK"} AK
                           %option{:value => "AZ"} AZ
@@ -154,4 +165,4 @@
                         %input.span2{:type => "text", :name => "zip", :placeholder => "Zip", :value => @instance.zip}
                         %span.help-block Users can get directions to your business from within the app
                     .actions
-                      %a.btn.primary Save Settings
+                      %a.btn.primary.submit Save Settings

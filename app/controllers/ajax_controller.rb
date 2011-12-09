@@ -7,6 +7,7 @@ class AjaxController < ApplicationController
       retVal[:status] = 1
       retVal[:app] = instance.params
       retVal[:app][:banner] = instance.banner.url
+      retVal[:app][:code] = instance.id
       retVal[:app].each {|k, v| retVal[:app][k] = 0 unless v}
       
     end

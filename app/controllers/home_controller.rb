@@ -3,6 +3,8 @@ class HomeController < ApplicationController
     if current_user
       if current_user.status == 1
         redirect_to complete_setup_app_path(current_user.app_instances.first)
+      #elsif current_user.status == 0
+      #  redirect_to 
       end
     end
   end

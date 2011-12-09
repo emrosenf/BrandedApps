@@ -1,22 +1,37 @@
 class AppsController < ApplicationController
   
   layout 'dashboard'
+  before_filter :require_login
   before_filter :get_apps
   
   
+  def update
+    @instance.update_settings(params)
+    render :json => {:status => 1, :message => "<strong>Congrats!</strong> App settings updated.", :type => "info"}
+  end
+  
+  def register_device
+    token = params[:token] || render_404
+    device = APN::Device.create(:token => token, :app_id=> @instance.id)
+    begin
+      device.save
+      status = 1
+    rescue
+    # device already exists  
+      status = 0
+    end
+    render :json => {:status => status}
+  end
+  
   def post_complete_setup
-    syms = [:twitter_on, :email_on, :email, :phone_on, :address, :city, :zip, :state, :path]
-    syms.each {|s| @instance.send("#{s.to_s}=", params[s])}
-    @instance.phone = params[:phone].gsub(/[() -]/, '')
-    @instance.twitter = params[:twitter].gsub(/@/, '')
-    @instance.save
-    current_user.status == 0
+    @instance.update_settings(params)
+    current_user.status = 0
     current_user.save
     redirect_to app_path(@instance)
   end
   
   def complete_setup
-    redirect_to app_path(@instance) unless current_user.status == 1
+    #redirect_to app_path(@instance) unless current_user.status == 1
   end
   
   def index

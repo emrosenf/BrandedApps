@@ -132,6 +132,50 @@
   }
 }*/
 
+#app-configuration-small {
+  position: relative;
+  img.app-preview { 
+    width: 256px;
+    border: 1px solid #ccc;
+  }
+  color: #ccc;
+  &.wikipedia {
+    color: #333;
+  }
+  span {
+    position: absolute;
+    left: 0;
+    font-family: Helvetica;
+    width: 256px;
+    text-align: center;
+  }
+  span.biz-greeting {
+    top: 2px;
+    font-size: 11px;
+    font-weight: 300;
+  }
+  span.biz-name {
+    top: 19px;
+    font-size: 15px;
+    font-weight: 500;
+  }
+ 
+  .biz-logo-holder {
+    overflow: hidden;
+    height: 32px;
+    width: 32px;
+    position: absolute;
+    top: 5px;
+    left: 12px;
+
+    img.biz-logo-thumbnail {
+      height:32px;
+      width:32px;
+    }
+  }
+}
+
+
 .app-configuration {
   position: relative;
   img.app-preview { 

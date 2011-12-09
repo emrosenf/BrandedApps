@@ -8,6 +8,7 @@ Appdoc::Application.routes.draw do
       get 'complete_setup'
       post 'complete_setup' => "apps#post_complete_setup", :as => "finalize"
       post 'messages' => "apps#messages_create", :as => "messages_create"
+      post 'register_device' => "apps#register_device"
     end
   end
   

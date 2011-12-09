@@ -61,8 +61,9 @@ jQuery ->
   )
   
   $("#greeting_cb").change( (e) ->
-    name = $('span.biz-name')
-    greeting = $('span.biz-greeting')
+    form = $(this).parents('.row').first()
+    name = form.find('span.biz-name')
+    greeting = form.find('span.biz-greeting')
     top = parseInt(name.css('top'))
     if $(this).attr('checked')
       greeting.show()
