@@ -11,18 +11,18 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111204003532) do
+ActiveRecord::Schema.define(:version => 20111209003532) do
 
 
   create_table "apn_device_groupings", :force => true do |t|
     t.integer "group_id"
     t.integer "device_id"
   end
-
+ 
   add_index "apn_device_groupings", ["device_id"], :name => "index_apn_device_groupings_on_device_id"
   add_index "apn_device_groupings", ["group_id", "device_id"], :name => "index_apn_device_groupings_on_group_id_and_device_id"
   add_index "apn_device_groupings", ["group_id"], :name => "index_apn_device_groupings_on_group_id"
-
+ 
   create_table "apn_devices", :force => true do |t|
     t.string   "token",              :null => false
     t.datetime "created_at"
@@ -30,9 +30,9 @@ ActiveRecord::Schema.define(:version => 20111204003532) do
     t.integer  "app_id"
     t.datetime "last_registered_at"
   end
-
+ 
   add_index "apn_devices", ["token"], :name => "index_apn_devices_on_token"
-
+ 
   create_table "apn_group_notifications", :force => true do |t|
     t.integer  "group_id",          :null => false
     t.string   "device_language"
@@ -44,9 +44,9 @@ ActiveRecord::Schema.define(:version => 20111204003532) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
-
+ 
   add_index "apn_group_notifications", ["group_id"], :name => "index_apn_group_notifications_on_group_id"
-
+ 
   create_table "apn_notifications", :force => true do |t|
     t.integer  "device_id",                        :null => false
     t.integer  "errors_nb",         :default => 0
@@ -60,10 +60,10 @@ ActiveRecord::Schema.define(:version => 20111204003532) do
     t.text     "custom_properties"
     t.string   "action_key"
   end
-
+ 
   add_index "apn_notifications", ["device_id"], :name => "index_apn_notifications_on_device_id"
-
-
+ 
+ 
   create_table "notification_lists", :force => true do |t|
     t.string   "name"
     t.integer  "app_instance_id"
@@ -71,18 +71,18 @@ ActiveRecord::Schema.define(:version => 20111204003532) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
-
-
+ 
+ 
   create_table "list_subscribers", :force => true do |t|
     t.integer  "subscriber_id"
     t.integer  "notification_list_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
-  
-  add_index "list_subscribers", ["subscriber_id"], :name => "index_list_subscribers_on_subscriber_id"
-  add_index "list_subscribers", ["notification_list_id"], :name => "index_list_subscribers_on_notification_list_id"
-
+   
+  add_index "app_instance_subscribers", ["app_instance_id"], :name => "index_app_subscribers_on_app_id"
+  add_index "app_instance_subscribers", ["subscriber_id"], :name => "index_app_subscribers_on_subscriber_id"
+ 
   create_table "app_instances", :force => true do |t|
     t.integer  "app_id"
     t.integer  "user_id"
@@ -95,10 +95,10 @@ ActiveRecord::Schema.define(:version => 20111204003532) do
     t.datetime "banner_updated_at"
     t.string   "path"
   end
-
+ 
   add_index "app_instances", ["app_id"], :name => "index_app_instances_on_app_id"
   add_index "app_instances", ["user_id"], :name => "index_app_instances_on_user_id"
-
+ 
   create_table "app_link_logs", :force => true do |t|
     t.integer  "app_instance_id"
     t.string   "uid"
@@ -106,7 +106,7 @@ ActiveRecord::Schema.define(:version => 20111204003532) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
-
+ 
   add_index "app_link_logs", ["app_instance_id"], :name => "index_app_link_logs_on_app_instance_id"
 
   create_table "apps", :force => true do |t|
