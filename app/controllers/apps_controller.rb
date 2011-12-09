@@ -57,7 +57,7 @@ class AppsController < ApplicationController
       notif.save      
     end
     
-    render :json => {:status => 1, :message => {:recipients => "everyone", :alert => params[:alert], :date => notif.created_at}}
+    render :json => {:status => 1, :message => {:recipients => "everyone", :alert => params[:alert], :date => Time.now}}
   end
 
   def settings
