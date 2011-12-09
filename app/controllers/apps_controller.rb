@@ -48,11 +48,14 @@ class AppsController < ApplicationController
   end
   
   def messages_create
-    notif = APN::Notification.new
-    notif.alert = params[:alert]
-    notif.device = APN::Device.first
-    notif.sound = true
-    notif.save
+    devices = APN::Device.find_by_app_id @instance.id
+    devices.each do |d|
+      notif = APN::Notification.new
+      notif.alert = params[:alert]
+      notif.device = d
+      notif.sound = true
+      notif.save      
+    end
     
     render :json => {:status => 1, :message => {:recipients => "everyone", :alert => params[:alert], :date => notif.created_at}}
   end
