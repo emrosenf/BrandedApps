@@ -80,8 +80,8 @@ ActiveRecord::Schema.define(:version => 20111209003532) do
     t.datetime "updated_at"
   end
    
-  add_index "app_instance_subscribers", ["app_instance_id"], :name => "index_app_subscribers_on_app_id"
-  add_index "app_instance_subscribers", ["subscriber_id"], :name => "index_app_subscribers_on_subscriber_id"
+  add_index "list_subscribers", ["notification_list_id"], :name => "index_list_subscribers_on_notification_list_id"
+  add_index "list_subscribers", ["subscriber_id"], :name => "index_list_subscribers_on_subscriber_id"
  
   create_table "app_instances", :force => true do |t|
     t.integer  "app_id"
