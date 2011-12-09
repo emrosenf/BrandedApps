@@ -1,7 +1,7 @@
 class AppsController < ApplicationController
   
   layout 'dashboard'
-  before_filter :require_login
+  before_filter :require_login, :except => [:register_device]
   before_filter :get_apps
   
   
