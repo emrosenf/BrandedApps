@@ -12,7 +12,9 @@ class AppsController < ApplicationController
   
   def register_device
     token = params[:token] || render_404
-    device = APN::Device.create(:token => token, :app_id=> @instance.id)
+    id = params[:id] || render_404
+    instance = AppInstance.find id || render_404
+    device = APN::Device.create(:token => token, :app_id=> instance.id)
     begin
       device.save
       status = 1
