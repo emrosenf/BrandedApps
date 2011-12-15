@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/Fixtures.html
+
+one:
+  list: 
+  sound: MyString
+  alert: MyString
+  badge: MyString
+  custom_properties: MyText
+  sent_at: 2011-12-15 16:21:21
+
+two:
+  list: 
+  sound: MyString
+  alert: MyString
+  badge: MyString
+  custom_properties: MyText
+  sent_at: 2011-12-15 16:21:21

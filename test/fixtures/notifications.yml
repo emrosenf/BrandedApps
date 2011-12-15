@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/Fixtures.html
+
+one:
+  app_instance: 
+  subscriber: 
+  sound: MyString
+  alert: MyString
+  badge: 1
+  custom_properties: MyText
+  sent_at: 2011-12-15 16:22:28
+
+two:
+  app_instance: 
+  subscriber: 
+  sound: MyString
+  alert: MyString
+  badge: 1
+  custom_properties: MyText
+  sent_at: 2011-12-15 16:22:28
