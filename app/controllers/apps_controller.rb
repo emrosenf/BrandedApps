@@ -14,7 +14,7 @@ class AppsController < ApplicationController
     token = params[:token] || render_404
     id = params[:id] || render_404
     instance = AppInstance.find id || render_404
-    device = APN::Device.create(:token => token, :app_id=> instance.id)
+    device = APN::Device.create(:token => token, :app_id=> instance.app_id)
     begin
       device.save
       status = 1
@@ -48,7 +48,7 @@ class AppsController < ApplicationController
   end
   
   def messages_create
-    devices = APN::Device.find_all_by_app_id @instance.id
+    devices = APN::Device.find_all_by_app_id @instance.app_id
     devices.each do |d|
       notif = APN::Notification.new
       notif.alert = params[:alert]

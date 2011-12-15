@@ -45,7 +45,7 @@
                           .input-append
                             %input.xlarge{:type=>"text", :name => "greeting", :value => @instance.greeting}
                             %label.add-on{:class => @instance.greeting_on.is_checked? ? "active" : ""}
-                              %input#greeting_cb{:type => "checkbox", :name => "greeting_on", :checked => @instance.greeting_on.is_checked?}
+                              = check_box nil, :greeting_on, {:checked => @instance.greeting_on.is_checked?,:id => "greeting_cb"}
                       .clearfix
                         %label Business Name
                         .input
@@ -84,8 +84,8 @@
                       .input
                         .input-prepend
                           %input.span4{:type=>"text", :name => "twitter", :placeholder => "@accountname", :value => @instance.twitter.format_twitter}
-                          %label.add-on.active
-                            %input{:type => "checkbox", :name => "twitter_on", :checked => true}
+                          %label.add-on{:class => @instance.twitter_on.checkbox_class}
+                            = check_box nil, :twitter_on, {:checked => true}
                         %span.help-block If checked, users will be asked to follow you on Twitter.
                     .clearfix
                       %label Contact E-Mail Address
@@ -93,7 +93,7 @@
                         .input-prepend
                           %input.span4{:type=>"text", :name => "email", :placeholder => "me@mycompany.com", :value => current_user.email}
                           %label.add-on{:class => @instance.email_on.checkbox_class}
-                            %input{:type => "checkbox", :name => "email_on", :checked => @instance.email_on.is_checked?}
+                            = check_box nil, :email_on, {:checked => @instance.email_on.is_checked?}
                         %span.help-block If checked, users will be able to send emails to this address.
                     .clearfix
                       %label Phone Number
@@ -101,7 +101,7 @@
                         .input-prepend
                           %input.span4{:type=>"text", :name => "phone", :placeholder => "123-456-7890", :value => @instance.phone.format_phone}
                           %label.add-on{:class => @instance.phone_on.checkbox_class}
-                            %input{:type => "checkbox", :name => "phone_on", :checked => @instance.phone_on.is_checked?}
+                            = check_box nil, :phone_on, {:checked => @instance.phone_on.is_checked?}
                         %span.help-block If checked, users will be able to call this number.
                     .clearfix
                       %label Business Address

@@ -45,7 +45,7 @@
                       .input-append
                         %input.xlarge{:type=>"text", :name => "greeting", :value => "Presented By"}
                         %label.add-on.active
-                          %input#greeting_cb{:type => "checkbox", :name => "greeting_on", :checked => true}
+                          = check_box nil, :greeting_on, {:checked => true}
                   .clearfix
                     %label Business Name
                     .input
@@ -81,7 +81,7 @@
                       .input-prepend
                         %input.span4{:type=>"text", :name => "twitter", :placeholder => "@accountname"}
                         %label.add-on
-                          %input{:type => "checkbox", :name => "allow_twitter"}
+                          = check_box nil, :twitter_on
                       %span.help-block If checked, users will be asked to follow you on Twitter.
                   .clearfix
                     %label Contact E-Mail Address
@@ -89,7 +89,7 @@
                       .input-prepend
                         %input.span4{:type=>"text", :name => "email", :placeholder => "me@mycompany.com"}
                         %label.add-on
-                          %input{:type => "checkbox", :name => "allow_email"}
+                          = check_box nil, :email_on
                       %span.help-block If checked, users will be able to send emails to this address.
                   .clearfix
                     %label Phone Number
@@ -97,7 +97,7 @@
                       .input-prepend
                         %input.span4{:type=>"text", :name => "phone", :placeholder => "123-456-7890"}
                         %label.add-on
-                          %input{:type => "checkbox", :name => "allow_phone"}
+                          = check_box nil, :phone_on
                       %span.help-block If checked, users will be able to call this number.
                   %fieldset
                     %legend Google Maps
@@ -106,7 +106,7 @@
                         %ul.inputs-list
                           %li
                             %label
-                              %input{:type => "checkbox", :name => "allow_twitter",}
+                              = check_box nil, :twitter_on
                               %span Allow users to follow you on twitter
                     .clearfix
                       .input

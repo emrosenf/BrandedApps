@@ -50,11 +50,11 @@ String.class_eval do
     "#{self[0..2]}-#{self[3..5]}-#{self[6..9]}"
   end
   def is_checked?
-    self == "on"
+    self == "1"
   end
   
   def checkbox_class
-    (self == "on") ? "active" : ""
+    (self == "1") ? "active" : ""
   end
 end
 

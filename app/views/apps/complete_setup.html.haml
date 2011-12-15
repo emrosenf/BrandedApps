@@ -29,7 +29,7 @@
                 .input-prepend
                   %input.span4{:type=>"text", :name => "twitter", :placeholder => "@accountname"}
                   %label.add-on.active
-                    %input{:type => "checkbox", :name => "twitter_on", :checked => true}
+                    = check_box nil, :twitter_on, {:checked => true}
                 %span.help-block If checked, users will be asked to follow you on Twitter.
             .clearfix
               %label Contact E-Mail Address
@@ -37,7 +37,7 @@
                 .input-prepend
                   %input.span4{:type=>"text", :name => "email", :placeholder => "me@mycompany.com", :value => current_user.email}
                   %label.add-on.active
-                    %input{:type => "checkbox", :name => "email_on", :checked => true}
+                    = check_box nil, :email_on, {:checked => true}
                 %span.help-block If checked, users will be able to send emails to this address.
             .clearfix
               %label Phone Number
@@ -45,7 +45,7 @@
                 .input-prepend
                   %input.span4{:type=>"text", :name => "phone", :placeholder => "123-456-7890"}
                   %label.add-on.active
-                    %input{:type => "checkbox", :name => "phone_on", :checked => true}
+                    = check_box nil, :phone_on, {:checked => true}
                 %span.help-block If checked, users will be able to call this number.
             .clearfix
               %label Business Address

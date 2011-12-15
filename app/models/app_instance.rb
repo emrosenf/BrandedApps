@@ -5,15 +5,32 @@ class AppInstance < ActiveRecord::Base
   has_many :app_instance_subscribers
   has_many :subscribers, :through => :app_instance_subscribers
   
-  serializeable :params, {:business_name => nil, :greeting => nil, :greeting_on => "on", 
-    :twitter_on => "on", :twitter => nil, :phone_on => "on", :phone => nil, :email_on => "on",
-    :email => nil, :address => nil, :city => nil, :state => nil, :zip => nil}
-    
-    
-  #before_save do
-  #  self.phone = self.phone.gsub(/[() -]/, '') if self.phone
-  #  self.twitter = self.twitter.gsub(/@/, '') if self.twitter
+  #before_create do
+  #  self.code = SecureRandom.hex(2)
+  #  while AppInstance.find_by_code(self.code)
+  #    self.code = SecureRandom.hex(2)
+  #  end
   #end
+  
+  serializeable :params, {:business_name => '', :greeting => '', :greeting_on => true, 
+    :twitter_on => true, :twitter => '', :phone_on => true, :phone => '', :email_on => true,
+    :email => '', :address => '', :city => '', :state => '', :zip => ''}
+    
+    
+  before_save do
+    #self.twitter_on ||= false
+    
+    #self.phone = self.phone.gsub(/[() -]/, '') if self.phone
+    #self.twitter = self.twitter.gsub(/@/, '') if self.twitter
+  end
+  
+  after_initialize do
+    self.greeting_on = self.greeting_on || 1
+    self.email_on = self.email_on || "1"
+    self.phone_on = self.phone_on || "1"
+    self.twitter = self.twitter ? self.twitter.gsub(/@/, '') : ''
+    self.phone = self.phone ? self.phone.gsub(/[() -]/, '') : ''
+  end
   
   def update_settings(params)
     syms = [:business_name, :greeting, :greeting_on, :twitter_on, :phone_on, :email_on, :email, :address, :city, :zip, :state, :path]

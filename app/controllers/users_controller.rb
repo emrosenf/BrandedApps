@@ -19,7 +19,7 @@ class UsersController < ApplicationController
       instance.save
       session[:user_id] = @user.id
       flash[:success] = "Congratulations! Your account has been created."
-      redirect_to signup_choose_path
+      redirect_to complete_setup_app_path(instance)
     else
       debugger
     end
