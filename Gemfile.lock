@@ -1,10 +1,3 @@
-GIT
-  remote: https://github.com/timsu/apn_on_rails.git
-  revision: 7447c4eaff06f65de00d505b30eae286730e6fe8
-  specs:
-    apn_on_rails (0.4.2)
-      configatron
-
 GEM
   remote: http://rubygems.org/
   specs:
@@ -57,8 +50,6 @@ GEM
       execjs
     coffee-script-source (1.1.3)
     columnize (0.3.4)
-    configatron (2.8.4)
-      yamler (>= 0.1.0)
     erubis (2.7.0)
     execjs (1.2.9)
       multi_json (~> 1.0)
@@ -150,13 +141,11 @@ GEM
       execjs (>= 0.3.0)
       multi_json (>= 1.0.2)
     xml-simple (1.1.1)
-    yamler (0.1.0)
 
 PLATFORMS
   ruby
 
 DEPENDENCIES
-  apn_on_rails!
   aws-s3
   bootstrap-sass (= 1.4.0)
   coffee-rails (~> 3.1.0)

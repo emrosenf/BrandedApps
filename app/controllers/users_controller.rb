@@ -17,6 +17,10 @@ class UsersController < ApplicationController
       syms = [:greeting, :greeting_on, :business_name]
       syms.each {|s| instance.send("#{s.to_s}=", params[s])}
       instance.save
+      
+      #Create Notification List
+      list = List.create(:app_instance_id => instance.id, :name => "All Users")
+      
       session[:user_id] = @user.id
       flash[:success] = "Congratulations! Your account has been created."
       redirect_to complete_setup_app_path(instance)

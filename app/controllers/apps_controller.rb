@@ -14,14 +14,10 @@ class AppsController < ApplicationController
     token = params[:token] || render_404
     id = params[:id] || render_404
     instance = AppInstance.find id || render_404
-    device = APN::Device.create(:token => token, :app_id=> instance.app_id)
-    begin
-      device.save
-      status = 1
-    rescue
-    # device already exists  
-      status = 0
-    end
+    subscriber = Subscriber.find_or_create_by_token(token)
+    subscriber.subscribe_to_instance instance
+    subscriber.subscribe_to_list instance.lists.first
+    status = 0
     render :json => {:status => status}
   end
   
@@ -48,14 +44,18 @@ class AppsController < ApplicationController
   end
   
   def messages_create
-    devices = APN::Device.find_all_by_app_id @instance.app_id
-    devices.each do |d|
-      notif = APN::Notification.new
-      notif.alert = params[:alert]
-      notif.device = d
-      notif.sound = true
-      notif.save      
+    type = params[:type] || render_404
+    if type == "group"
+      notif = @instance.message_everyone(params)
     end
+    #devices = APN::Device.find_all_by_app_id @instance.app_id
+    #devices.each do |d|
+    #  notif = APN::Notification.new
+    #  notif.alert = params[:alert]
+    #  notif.device = d
+    #  notif.sound = true
+    #  notif.save      
+    #end
     
     render :json => {:status => 1, :message => {:recipients => "everyone", :alert => params[:alert], :date => Time.now}}
   end

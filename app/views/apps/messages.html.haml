@@ -27,6 +27,7 @@
           .tab-content
             .tab-pane.active#everyone
               = form_tag(messages_create_app_path, {:class => "form-stacked", :method => "POST"}) do
+                = hidden_field_tag :type, "group"
                 %fieldset
                   %legend New Message
                   .clearfix

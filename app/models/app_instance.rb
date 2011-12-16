@@ -2,6 +2,7 @@ class AppInstance < ActiveRecord::Base
   has_attached_file :banner, {}.merge(PAPERCLIP_STORAGE_OPTIONS)
   belongs_to :user
   belongs_to :app
+  has_many :lists
   has_many :app_instance_subscribers
   has_many :subscribers, :through => :app_instance_subscribers
   
@@ -30,6 +31,11 @@ class AppInstance < ActiveRecord::Base
     self.phone_on = self.phone_on || "1"
     self.twitter = self.twitter ? self.twitter.gsub(/@/, '') : ''
     self.phone = self.phone ? self.phone.gsub(/[() -]/, '') : ''
+  end
+  
+  def message_everyone(params)
+    list = self.lists.first
+    ListNotification.create(:list_id => list.id, :app_instance_id => self.id, :app_id => self.app_id, :alert => params[:alert], :sound => true, :badge => 1)
   end
   
   def update_settings(params)

@@ -15,14 +15,15 @@
       .row
         .span8
           %h2 Preview  
-          .app-configuration
-            %img.app-preview{:src => "/assets/card_reader.png"} 
+          .app-configuration.wikipedia
+            %img.app-preview{:src => @apps[0].canvas.url} 
             %span.biz-greeting Presented By
             %span.biz-name Your Name Here
             .biz-logo-holder
               %img.biz-logo-thumbnail{:style => "height:36px;width:36px;"}
         .span8
           = form_tag(users_path, {:id => "slides", :class => "form-stacked slides_container", :method => "POST", :enctype => "multipart/form-data"}) do
+            = hidden_field_tag :app_id, @apps[0].id
             .slides_container
               .step1
                 %h2 Step 1

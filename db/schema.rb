@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111215222439) do
+ActiveRecord::Schema.define(:version => 20111216004846) do
 
   create_table "apn_apps", :force => true do |t|
     t.text     "apn_dev_cert"
@@ -151,6 +151,8 @@ ActiveRecord::Schema.define(:version => 20111215222439) do
     t.datetime "sent_at"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "app_instance_id"
+    t.integer  "app_id"
   end
 
   add_index "list_notifications", ["list_id"], :name => "index_list_notifications_on_list_id"
@@ -186,6 +188,7 @@ ActiveRecord::Schema.define(:version => 20111215222439) do
     t.datetime "sent_at"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "app_id"
   end
 
   add_index "notifications", ["app_instance_id"], :name => "index_notifications_on_app_instance_id"
@@ -197,7 +200,7 @@ ActiveRecord::Schema.define(:version => 20111215222439) do
     t.string   "email"
     t.string   "phone"
     t.integer  "platform"
-    t.string   "udid"
+    t.string   "token"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
