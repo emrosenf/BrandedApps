@@ -11,7 +11,8 @@ class App < ActiveRecord::Base
   has_attached_file :canvas, {}.merge(PAPERCLIP_STORAGE_OPTIONS)
   
   def cert
-    (Rails.env == 'production' ? apn_prod_cert : apn_dev_cert)
+    apn_dev_cert
+    #(Rails.env == 'production' ? apn_prod_cert : apn_dev_cert)
   end
   
   
