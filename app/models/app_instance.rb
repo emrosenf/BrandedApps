@@ -36,6 +36,7 @@ class AppInstance < ActiveRecord::Base
   def message_everyone(params)
     list = self.lists.first
     ListNotification.create(:list_id => list.id, :app_instance_id => self.id, :app_id => self.app_id, :alert => params[:alert], :sound => true, :badge => 1)
+    self.app.send_all_notifications
   end
   
   def update_settings(params)
