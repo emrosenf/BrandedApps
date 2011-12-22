@@ -61,7 +61,7 @@ module APN
         
         options = {:passphrase => '',
                    :port => 2195,
-                   :host => 'gateway.sandbox.push.apple.com'}.merge(options)
+                   :host => (Rails.env == 'production' ? 'gateway.push.apple.com' : 'gateway.sandbox.push.apple.com')}.merge(options)
         #cert = File.read(options[:cert])
         cert = options[:cert]
         ctx = OpenSSL::SSL::SSLContext.new
