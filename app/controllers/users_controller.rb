@@ -7,6 +7,15 @@ class UsersController < ApplicationController
     required = [:email, :password, :password_confirmation, :app_id, :greeting, :greeting_on, :business_name, :logo_file]
     required.each{|r| render_404 unless params.has_key? r}
     app = App.find(params[:app_id]) || render_404
+    @user = User.find_by_email(params[:email])
+    if @user && @user.authenticate(params[:password])
+      session[:user_id] = @user.id
+      redirect_to apps_url, :notice => "Logged in!"
+    else
+      flash[:error] = "Invalid email or password"
+      redirect_to login_path
+    end
+    
     @user = User.new(:email => params[:email], :password => params[:password], :password_confirmation => params[:password_confirmation])
     @user.status = 1
     if @user.save
