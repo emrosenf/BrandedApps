@@ -36,17 +36,16 @@
                 .input
                   %input.span5{:type=>"text", :name => "email", :placeholder => "me@domain.com", :value => current_user.email}
               .clearfix
-                %label Change Password
-                .input
-                  %input.span3{:type => "password", :name => "new_password"}
-                  %input.span3{:type => "password", :name => "new_password_confirmation"}
-                  %span.help-block{:style => "display:none;"} Passwords must match
-              .clearfix
                 %label Current Password
                 .input
                   %input.span5{:type => "password", :name => "password"}
+              .clearfix
+                %label New Password
+                .input
+                  %input.span3{:type => "password", :name => "new_password", :placeholder => "New Password"}
+                  %input.span3{:type => "password", :name => "new_password_confirmation", :placeholder => "Confirm Password"}
                   %span.help-block{:style => "display:none;"} Passwords must match
-        
+
 
             .actions
               %a.btn.primary Update
