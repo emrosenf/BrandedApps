@@ -1,7 +1,7 @@
 class User < ActiveRecord::Base
   # User model represents someone who can log into the site
   
-  has_many :app_instances
+  has_many :app_instances, :dependent => :destroy
   attr_accessible :email, :password, :password_confirmation
   has_secure_password
   validates_uniqueness_of :email

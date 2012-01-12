@@ -5,7 +5,7 @@ class App < ActiveRecord::Base
   belongs_to :user
   has_many :notifications, :dependent => :destroy
   has_many :unsent_notifications, :class_name => "Notification", :conditions => 'sent_at is null'
-  has_many :list_notifications
+  has_many :list_notifications, :dependent => :destroy
   has_many :unsent_list_notifications, :class_name => "ListNotification", :conditions => 'sent_at is null'
   
   has_attached_file :canvas, {}.merge(PAPERCLIP_STORAGE_OPTIONS)

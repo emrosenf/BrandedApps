@@ -2,8 +2,8 @@ class AppInstance < ActiveRecord::Base
   has_attached_file :banner, {}.merge(PAPERCLIP_STORAGE_OPTIONS)
   belongs_to :user
   belongs_to :app
-  has_many :lists
-  has_many :app_instance_subscribers
+  has_many :lists, :dependent => :destroy
+  has_many :app_instance_subscribers, :dependent => :destroy
   has_many :subscribers, :through => :app_instance_subscribers
   
   #before_create do
