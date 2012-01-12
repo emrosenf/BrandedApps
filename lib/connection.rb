@@ -58,7 +58,6 @@ module APN
       
       private
       def open(options = {}, &block) # :nodoc:
-        
         options = {:passphrase => '',
                    :port => 2195,
                    :host => (Rails.env == 'production' ? 'gateway.push.apple.com' : 'gateway.sandbox.push.apple.com')}.merge(options)
