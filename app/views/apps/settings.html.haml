@@ -74,12 +74,6 @@
                 .span7
                   = form_tag(app_path, {:class => "form-stacked", :method => "PUT", :enctype => "multipart/form-data"}) do
                     .clearfix
-                      %label Link Address
-                      .input
-                        %span http://merchcraft.com/l/
-                        %input.span3{:style => "display:inline;", :type => "text", :name => "path", :placeholder => "MyBusinessName"}
-                        %span.help-block This will be a link that you can send to your customers
-                    .clearfix
                       %label Twitter
                       .input
                         .input-prepend
