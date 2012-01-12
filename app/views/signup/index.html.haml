@@ -46,7 +46,7 @@
                       .input-append
                         %input.xlarge{:type=>"text", :name => "greeting", :value => "Presented By"}
                         %label.add-on.active
-                          = check_box nil, :greeting_on, {:checked => true}
+                          = check_box nil, :greeting_on, {:id => "greeting_cb", :checked => true}
                   .clearfix
                     %label Business Name
                     .input
