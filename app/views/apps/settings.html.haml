@@ -85,7 +85,7 @@
                         .input-prepend
                           %input.span4{:type=>"text", :name => "twitter", :placeholder => "@accountname", :value => @instance.twitter.format_twitter}
                           %label.add-on{:class => @instance.twitter_on.checkbox_class}
-                            = check_box nil, :twitter_on, {:checked => true}
+                            = check_box nil, :twitter_on, {:checked => @instance.twitter_on.is_checked?}
                         %span.help-block If checked, users will be asked to follow you on Twitter.
                     .clearfix
                       %label Contact E-Mail Address
