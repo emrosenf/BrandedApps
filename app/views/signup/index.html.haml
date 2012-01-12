@@ -32,8 +32,8 @@
                   - @apps.each do |t|
                     %li
                       %a{:href => "#", :type => "#{t.id}-#{t.name.downcase!.gsub(/ /, '-')}", :rel => "twipsy", :title => t.description, "data-placement" => "below"}
+                        %h6{:style => "margin: 0 auto;"} #{t.name}
                         %img.thumbnail{:src => t.canvas.url, :width => 192}
-                        %h6 #{t.name}
                 .well
                   %a.btn.primary.next.pull-right Next &rarr;
               .step2
