@@ -2,6 +2,11 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+h5.app-title {
+  text-align: center;
+  text-transform: capitalize;
+}
+
 #app-info-screen {
   position: relative;
   span {
