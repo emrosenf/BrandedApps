@@ -21,7 +21,7 @@ class AppsController < ApplicationController
   def register_device
     token = params[:token] || render_404
     id = params[:id] || render_404
-    instance = AppInstance.find id || render_404
+    instance = AppInstance.find_by_code id || render_404
     subscriber = Subscriber.find_or_create_by_token(token)
     subscriber.subscribe_to_instance instance
     subscriber.subscribe_to_list instance.lists.first
