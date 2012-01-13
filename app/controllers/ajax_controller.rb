@@ -1,13 +1,13 @@
 class AjaxController < ApplicationController
   
   def instance_lookup
-    instance = AppInstance.find params[:code]
+    instance = AppInstance.find_by_code params[:code]
     retVal = {:status => 0}
     if instance
       retVal[:status] = 1
       retVal[:app] = instance.params
       retVal[:app][:banner] = instance.banner.url
-      retVal[:app][:code] = instance.id
+      retVal[:app][:code] = instance.code
       retVal[:app].each {|k, v| retVal[:app][k] = 0 unless v}
       
     end

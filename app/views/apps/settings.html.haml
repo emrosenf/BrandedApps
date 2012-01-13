@@ -56,11 +56,10 @@
                           %input.xlarge{:type=>"file", :name => "logo_file"}
                           %span.help-block Use a square image at least 60x60.
                       .clearfix
-                        %label Link Address
+                        %label Activation Code
                         .input
-                          %span http://merchcraft.com/l/
-                          %input.large{:style => "display:inline;", :type => "text", :name => "path", :placeholder => "MyBusinessName", :value => @instance.path}
-                          %span.help-block This will be a link that you can send to your customers
+                          %input.xlarge{:type => "text", :name => "code", :placeholder => "MyBusinessName", :value => @instance.code}
+                          %span.help-block Your customers will enter this code to activate your app
                     .actions
                       %a.btn.primary.submit Save Settings
             .tab-pane#info
