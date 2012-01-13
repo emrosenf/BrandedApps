@@ -41,6 +41,7 @@ class AppsController < ApplicationController
   end
 
   def messages
+    @notifications = @instance.lists.first.notifications
   end
   
   def messages_create
@@ -57,7 +58,7 @@ class AppsController < ApplicationController
     #  notif.save      
     #end
     
-    render :json => {:status => 1, :message => {:recipients => "everyone", :alert => params[:alert], :date => Time.now}}
+    render :json => {:status => 1, :message => {:recipients => "everyone", :alert => params[:alert], :date => Time.now.to_s(:quick)}}
   end
 
   def settings

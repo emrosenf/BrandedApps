@@ -46,3 +46,8 @@
                 %th Message
                 %th Time Sent
             %tbody
+              - @notifications.each do |noty|
+                %tr
+                  %td Everyone
+                  %td #{noty.alert}
+                  %td #{noty.sent_at.to_s(:quick)}
