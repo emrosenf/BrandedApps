@@ -2,6 +2,8 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+$small-logo-thumbnail-size: 28px;
+
 h5.app-title {
   text-align: center;
   text-transform: capitalize;
@@ -155,27 +157,30 @@ h5.app-title {
     text-align: center;
   }
   span.biz-greeting {
-    top: 2px;
+    top: 1px;
     font-size: 11px;
     font-weight: 300;
   }
   span.biz-name {
-    top: 19px;
+    &.no-greeting {
+      top: 6px;
+    }
+    top: 16px;
     font-size: 15px;
     font-weight: 500;
   }
  
   .biz-logo-holder {
     overflow: hidden;
-    height: 32px;
-    width: 32px;
+    height: $small-logo-thumbnail-size;
+    width: $small-logo-thumbnail-size;
     position: absolute;
     top: 5px;
     left: 12px;
 
     img.biz-logo-thumbnail {
-      height:32px;
-      width:32px;
+      height:$small-logo-thumbnail-size;
+      width:$small-logo-thumbnail-size;
     }
   }
 }
@@ -208,11 +213,17 @@ h5.app-title {
     font-size: 13px;
   }
   span.biz-name {
+    &.no-greeting {
+      top: 9px;
+    }
     top: 19px;
     font-size: 15px;
     font-weight: 500;
   }
   &.wikipedia span.biz-name {
+    &.no-greeting {
+      top: 19px;
+    }
     font-size: 17px;
     top: 29px;
   }

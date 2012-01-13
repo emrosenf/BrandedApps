@@ -64,13 +64,12 @@ jQuery ->
     form = $(this).parents('.row').first()
     name = form.find('span.biz-name')
     greeting = form.find('span.biz-greeting')
-    top = parseInt(name.css('top'))
     if $(this).attr('checked')
       greeting.show()
-      name.css('top', top + 10 + "px")
+      name.removeClass('no-greeting')
     else
       greeting.hide()
-      name.css('top', top - 10 + "px")
+      name.addClass('no-greeting')
     
   )
   
