@@ -1,0 +1,1 @@
+Time::DATE_FORMATS[:quick] = "%B %d, %Y %I:%M%p"
