@@ -6,6 +6,7 @@ Appdoc::Application.routes.draw do
       get 'settings'
       get 'messages'
       get 'complete_setup'
+      put 'update_image' => 'apps#update_image', :as => "update_image"
       post 'complete_setup' => "apps#post_complete_setup", :as => "finalize"
       post 'messages' => "apps#messages_create", :as => "messages_create"
       post 'register_device' => "apps#register_device"

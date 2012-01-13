@@ -5,6 +5,14 @@ class AppsController < ApplicationController
   before_filter :get_apps, :except => [:register_device]
   
   
+  def update_image
+    if params.has_key? :logo_file
+      @instance.banner = params[:logo_file]
+      @instance.save
+    end
+    redirect_to settings_app_path(@instance)
+  end
+  
   def update
     @instance.update_settings(params)
     render :json => {:status => 1, :message => "<strong>Congrats!</strong> App settings updated.", :type => "info"}
