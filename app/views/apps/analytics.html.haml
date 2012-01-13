@@ -1,2 +1,37 @@
-%h1 Apps#analytics
-%p Find me in app/views/apps/analytics.html.haml
+.container{:id => params[:action]}
+  .content
+    .row
+      .span4
+        %h3 Your Application
+        %ul.unstyled
+          %li
+            = link_to "Dashboard", app_path(@instance)
+          %li
+            = link_to "Messages", messages_app_path(@instance)
+          %li
+            = link_to "Settings", settings_app_path(@instance)
+          %li
+            = link_to "Analytics", analytics_app_path(@instance)
+      .span12
+        #flash-messages
+          - flash.each do |name, msg|
+            .alert-message.fade.in{:class => name, "data-alert" => "alert"}
+              %a.close{:href => "#"} x
+              %p #{msg}
+        .page-header
+          %h2 Analytics
+          .row
+            .span6
+              %h3 Number of Subscribers:
+            .span6
+              %span.statistic #{@numSubscribers}
+          .row
+            .span6
+              %h3 Number of Messages Sent:
+            .span6
+              %span.statistic #{@numMessages}
+          .row
+            .span6
+              %h3 Last Message Sent:
+            .span6
+              %span.statistic #{@lastMessageSentAt}

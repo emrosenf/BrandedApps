@@ -73,6 +73,14 @@ class AppsController < ApplicationController
   end
 
   def analytics
+    @list = @instance.lists.first
+    @numSubscribers = @list.subscribers.count
+    @notifications = @list.notifications
+    @lastMessageSentAt = "No messages sent yet"
+    if @notifications.count > 0
+      @lastMessageSentAt = @notifications[0].created_at.to_s(:quick)
+    end
+    @numMessages = @list.notifications.count
   end
 
 
