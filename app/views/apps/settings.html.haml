@@ -44,7 +44,7 @@
                         .input
                           .input-append
                             %input.xlarge{:type=>"text", :name => "greeting", :value => @instance.greeting}
-                            %label.add-on{:class => @instance.greeting_on.is_checked? ? "active" : ""}
+                            %label.add-on{"data-placement"=>"below" ,:rel=>'twipsy', :title => 'Uncheck to remove the greeting', :class => @instance.greeting_on.is_checked? ? "active" : ""}
                               = check_box nil, :greeting_on, {:checked => @instance.greeting_on.is_checked?,:id => "greeting_cb"}
                       .clearfix
                         %label Business Name
