@@ -22,8 +22,9 @@
           %ul.tabs{"data-tabs" => "tabs"}
             %li.active
               %a{:href => "#everyone"} Send to Everyone
-            %li
-              %a{:href => "#individual"} Send to Individuals
+            -#
+              %li
+                %a{:href => "#individual"} Send to Individuals
           .tab-content
             .tab-pane.active#everyone
               = form_tag(messages_create_app_path, {:class => "form-stacked", :method => "POST"}) do
@@ -36,7 +37,8 @@
                       %span.help-block Your message can be at most 200 characters long
                 .actions
                   %a.btn.primary.submit Send Message
-            .tab-pane#individual
+            -#
+              .tab-pane#individual
           %hr
           %h3 Sent Messages
           %table.bordered-table.zebra-striped
