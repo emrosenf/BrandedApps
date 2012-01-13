@@ -59,6 +59,9 @@ Appdoc::Application.configure do
   config.active_support.deprecation = :notify
   
   PAPERCLIP_STORAGE_OPTIONS = {
+    :styles => {
+      :thumb => "128x128>"
+    },
     :storage => :s3,
     :s3_credentials => Rails.root.join("config/s3.yml"),
     :path => ":attachment/:id/:style.:extension",

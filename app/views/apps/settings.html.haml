@@ -36,7 +36,7 @@
                     %span.biz-greeting #{@instance.greeting}
                     %span.biz-name #{@instance.business_name}
                     .biz-logo-holder
-                      = image_tag @instance.banner.url, {:class => "biz-logo-thumbnail"}
+                      = image_tag @instance.banner.url(:thumb), {:class => "biz-logo-thumbnail"}
                 .span7
                   = form_tag(app_path(@instance), {:class => "form-stacked", :method => "PUT", :enctype => "multipart/form-data"}) do
                     %fieldset
@@ -66,7 +66,7 @@
                     = image_tag "app_info_table.png", {:width => "256"}
                     %span.biz-name #{@instance.business_name}
                     .biz-logo-holder
-                      = image_tag @instance.banner.url, {:class => "biz-logo-thumbnail"}
+                      = image_tag @instance.banner.url(:thumb), {:class => "biz-logo-thumbnail"}
                 .span7
                   = form_tag(app_path, {:class => "form-stacked", :method => "PUT", :enctype => "multipart/form-data"}) do
                     .clearfix
@@ -156,7 +156,7 @@
                         %span.help-block Users can get directions to your business from within the app
                     .actions
                       %a.btn.primary.submit Save Settings
-            .tab-page#images
+            .tab-pane#images
               .row
                 = form_tag(update_image_app_path(@instance), {:class => "form-stacked", :method => :put, :enctype => "multipart/form-data"}) do
                   %fieldset
