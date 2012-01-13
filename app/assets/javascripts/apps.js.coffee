@@ -12,7 +12,7 @@ jQuery ->
     $.post(form.attr('action'), form.serializeArray(), (response) ->
       if response.status == 1
         message = response.message
-        $('.zebra-striped').prepend("<tr><td>#{message.recipients}</td><td>#{message.alert}</td><td>#{message.date}</td></tr>")
+        $('.zebra-striped').prepend("<tr><td>#{message.alert}</td><td>#{message.date}</td></tr>")
     );
     e.preventDefault()
     return false

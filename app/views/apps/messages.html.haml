@@ -42,12 +42,10 @@
           %table.bordered-table.zebra-striped
             %thead
               %tr
-                %th Recipients
                 %th Message
-                %th Time Sent
+                %th{:style => "width:180px;"} Time Sent
             %tbody
               - @notifications.each do |noty|
                 %tr
-                  %td Everyone
                   %td #{noty.alert}
                   %td #{noty.sent_at.to_s(:quick)}
