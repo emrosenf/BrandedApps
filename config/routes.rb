@@ -29,7 +29,7 @@ Appdoc::Application.routes.draw do
   get "logout" => "sessions#destroy", :as => "logout"
   get "login" => "sessions#new", :as => "login"
   
-  get "l/:id" => "ajax#app_link"
+  get "l/:id" => "ajax#app_link", :as => "app_link"
   
   resources :users
   resources :sessions
