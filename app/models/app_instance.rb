@@ -15,7 +15,7 @@ class AppInstance < ActiveRecord::Base
   
   serializeable :params, {:business_name => '', :greeting => '', :greeting_on => true, 
     :twitter_on => true, :twitter => '', :phone_on => true, :phone => '', :email_on => true,
-    :email => '', :address => '', :city => '', :state => '', :zip => '', :code => ''}
+    :email => '', :address => '', :city => '', :state => '', :zip => ''}
     
     
   before_save do
@@ -40,7 +40,7 @@ class AppInstance < ActiveRecord::Base
   end
   
   def update_settings(params)
-    syms = [:business_name, :greeting, :greeting_on, :twitter_on, :phone_on, :email_on, :email, :address, :city, :zip, :state, :code]
+    syms = [:business_name, :greeting, :greeting_on, :twitter_on, :phone_on, :email_on, :email, :address, :city, :zip, :state]
     syms.each {|s| self.send("#{s.to_s}=", params[s]) if params[s]}
     if params[:phone]
       self.phone = params[:phone].gsub(/[() -]/, '')
