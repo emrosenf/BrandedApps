@@ -1,4 +1,4 @@
-.container
+.container{:id => params[:action]}
   .content
     .row
       .span4
@@ -13,34 +13,29 @@
           %li
             = link_to "Analytics", analytics_app_path(@instance)
       .span12
-        - flash.each do |name, msg|
-          .alert-message.fade.in{:class => name, "data-alert" => "alert"}
-            %a.close{:href => "#"} x
-            %p #{msg}
+        #flash-messages
+          - flash.each do |name, msg|
+            .alert-message.fade.in{:class => name, "data-alert" => "alert"}
+              %a.close{:href => "#"} x
+              %p #{msg}
         .page-header
           %h2 Dashboard
-          = form_tag(users_path, {:class => "form", :method => "POST", :enctype => "multipart/form-data"}) do
-            %fieldset
-              %legend Login Information
-              .clearfix
-                %label Your Name
-                .input
-                  %input.span3{:type=>"text", :name => "first_name", :placeholder => "First Name"}
-                  %input.span3{:type=>"text", :name => "last_name", :placeholder => "Last Name"}
-              .clearfix
-                %label Email Address
-                .input
-                  %input.span5{:type=>"text", :name => "email"}
-              .clearfix
-                %label Password
-                .input
-                  %input.span5{:type => "password", :name => "password"}
-              .clearfix
-                %label Confirm Password
-                .input
-                  %input.span5{:type => "password", :name => "password_confirmation"}
-                  %span.help-block{:style => "display:none;"} Passwords must match
-        
-
-            .actions
-              %a.btn.primary Update
+          .row
+            .span5
+              #app-configuration-small
+                = image_tag @instance.app.canvas, {:width => "256", :class => "app-preview"}
+                %span.biz-greeting #{@instance.greeting}
+                %span.biz-name #{@instance.business_name}
+                .biz-logo-holder
+                  = image_tag @instance.banner.url(:thumb), {:class => "biz-logo-thumbnail"}
+            .span7
+              %h3 Instructions
+              %p This will teach you to walk your customers through the process of downloading and installing your application
+              
+              %h3 Activation Code
+              %p 
+                Your app's activation code is
+                %b #{@instance.code}.
+                
+              %h3 Links
+              %p Tell you customers to go to this link on their mobile phones: #{app_link_url(@instance)}
