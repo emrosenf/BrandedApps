@@ -12,7 +12,7 @@
 //= require bootstrap
 
 $(function () {
-              $("a[rel=twipsy]").twipsy({
+              $("[rel=twipsy]").twipsy({
                 live: true
               })
       
