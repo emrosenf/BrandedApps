@@ -9,7 +9,8 @@ class AjaxController < ApplicationController
       retVal[:app][:banner] = instance.banner.url(:thumb)
       retVal[:app][:code] = instance.code
       retVal[:app].each {|k, v| retVal[:app][k] = 0 unless v}
-      
+      retVal[:app][:interstitial] = "http://9to5mac.files.wordpress.com/2010/04/9to5mac.jpg"
+      retVal[:app][:interstitialTime] = "0.5"
     end
     render :json => retVal
   end
