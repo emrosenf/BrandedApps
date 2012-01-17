@@ -42,7 +42,9 @@ class AppInstance < ActiveRecord::Base
   def update_settings(params)
     syms = [:business_name, :greeting, :greeting_on, :twitter_on, :phone_on, :email_on, :email, :address, :city, :zip, :state]
     syms.each {|s| self.send("#{s.to_s}=", params[s]) if params[s]}
-    self.code = params[:code]
+    if params[:code]
+      self.code = params[:code]
+    end
     if params[:phone]
       self.phone = params[:phone].gsub(/[() -]/, '')
     end
