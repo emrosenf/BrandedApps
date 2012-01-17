@@ -11,6 +11,7 @@ class AjaxController < ApplicationController
       retVal[:app].each {|k, v| retVal[:app][k] = 0 unless v}
       #retVal[:app][:interstitial] = "http://9to5mac.files.wordpress.com/2010/04/9to5mac.jpg"
       retVal[:app][:interstitialTime] = "2.5"
+      retVal[:app][:adFormat] = "AHTextAdView"
     end
     render :json => retVal
   end
