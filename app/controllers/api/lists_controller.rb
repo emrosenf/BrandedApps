@@ -69,7 +69,7 @@ ENDL
   
   def show
     l = List.find_by_id params[:id]
-    retVal = {:name => l.name, :list_id => l.id, :controller => "show"}
+    retVal = {:name => l.name, :description => l.description, :list_id => l.id, :owner => l.user.name}
     render :json => retVal
   end
   

@@ -11,7 +11,7 @@ class Feeds::ListsController < ApplicationController
     required.each{|r| render_404 unless params.has_key? r}
     @list = List.create(:name => params[:name], :description => params[:description], 
       :frequency => params[:frequency], :user_id => current_user.id)
-    flash[:success] = 'List "#{@list.name}" has been created!'
+    flash[:success] = "#{@list.name} has been created!"
     redirect_to feeds_dashboard_path and return
   end
   
