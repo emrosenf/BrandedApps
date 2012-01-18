@@ -30,10 +30,9 @@ class UsersController < ApplicationController
       
       #Create Notification List
       list = List.create(:app_instance_id => instance.id, :name => "All Users")
-      
       session[:user_id] = @user.id
       flash[:success] = "Congratulations! Your account has been created."
-      redirect_to complete_setup_app_path(instance)
+      redirect_to complete_setup_app_path(instance) and return
     else
       debugger
     end

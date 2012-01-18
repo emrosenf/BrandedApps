@@ -10,7 +10,7 @@ class AppsController < ApplicationController
       @instance.banner = params[:logo_file]
       @instance.save
     end
-    redirect_to settings_app_path(@instance)
+    redirect_to settings_app_path(@instance) and return
   end
   
   def update
@@ -33,7 +33,7 @@ class AppsController < ApplicationController
     @instance.update_settings(params)
     current_user.status = 0
     current_user.save
-    redirect_to app_path(@instance)
+    redirect_to app_path(@instance) and return
   end
   
   def complete_setup
@@ -41,7 +41,7 @@ class AppsController < ApplicationController
   end
   
   def index
-    redirect_to app_path(@instance)
+    redirect_to app_path(@instance) and return
   end
   
   def show
