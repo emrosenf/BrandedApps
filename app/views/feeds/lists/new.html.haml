@@ -1,0 +1,37 @@
+.topbar
+  .fill
+    .container
+      %a.brand AppMakr
+      %ul.nav
+        %li
+          %a{:href => "how"} How
+      %p.account.pull-right
+        %a{:href=> login_url} Log In
+#signup
+  .container
+    .content
+      .page-header
+        %h1 Create a New Feed
+      .row
+        .span8.offset4
+          = form_tag(feeds_lists_url, {:class => "form-stacked", :method => "POST", :enctype => "multipart/form-data"}) do
+            .step2
+              %fieldset
+                .clearfix
+                  %label List Name
+                  .input
+                    %input.xlarge{:type=>"text", :name => "name", :placeholder => "My Awesome List"}  
+                .clearfix
+                  %label Description
+                  .input
+                    %textarea.span5{:name => "description", :placeholder => "I send out awesome messages on My Awesome List."}
+                .clearfix
+                  %label Frequency Estimate
+                  .input
+                    %select.span3{:name => "frequency"}
+                      - @frequencies.each do |f|
+                        %option{:value => f} #{f}
+                        
+                    %span.help-block How frequently you intend to send messages to this list
+              .actions
+                %button.btn.primary{:type => "submit"} Create List!

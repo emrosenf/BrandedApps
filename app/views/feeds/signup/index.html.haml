@@ -1,0 +1,44 @@
+.topbar
+  .fill
+    .container
+      %a.brand AppMakr
+      %ul.nav
+        %li
+          %a{:href => "how"} How
+      %p.account.pull-right
+        %a{:href=> login_url} Log In
+#signup
+  .container
+    .content
+      .page-header
+        %h1 Signup to Create Feeds
+      .row
+        .span8.offset4
+          = form_tag(feeds_users_path, {:method => "POST", :enctype => "multipart/form-data"}) do
+            .step2
+              %fieldset
+                .clearfix
+                  %label Business Name
+                  .input
+                    %input.xlarge{:type=>"text", :name => "name", :placeholder => "Your business name"}  
+                .clearfix
+                  %label Email Address
+                  .input
+                    %input.xlarge{:type=>"text", :name => "email"}
+                .clearfix
+                  %label Password
+                  .input
+                    %input.xlarge{:type => "password", :name => "password"}
+                .clearfix
+                  %label Confirm Password
+                  .input
+                    %input.xlarge{:type => "password", :name => "password_confirmation"}
+                    %span.help-block{:style => "display:none;"} Passwords must match
+                -#
+                  .clearfix
+                    %label Logo
+                    .input
+                      %input.xlarge{:type=>"file", :name => "logo_file"}
+                      %span.help-block Use a square image at least 60x60.
+              .actions
+                %button.btn.primary{:type => "submit"} Create Account
