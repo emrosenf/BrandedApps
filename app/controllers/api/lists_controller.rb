@@ -47,7 +47,7 @@ ENDL
     if subscriber
       if subscriber.subscribes_to? list
         list.unsubscribe subscriber
-        retVal[:status] => 1
+        retVal[:status] = 1
       else
         retVal[:error] = "Subscriber does not subscribe to this list"
       end
