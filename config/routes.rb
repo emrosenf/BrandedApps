@@ -1,5 +1,34 @@
 Appdoc::Application.routes.draw do
 
+  namespace :feeds do
+    get "signup" => "signup#index", :as => "signup"
+    get "dashboard" => "dashboard#index", :as => "dashboard"
+    resources :users
+    resources :lists do 
+      get "messages", :on => :member
+    end
+  end
+
+  namespace :api do
+    resources :lists do
+      member do
+        post 'subscribe'
+        post 'unsubscribe'
+      end
+    end
+    resources :subscribers do
+      member do
+        get 'lists'
+      end
+    end
+    resources :users do
+      member do 
+        get 'lists'
+      end
+    end
+  end
+
+
   resources :apps do
     member do
       get 'analytics'
@@ -19,7 +48,7 @@ Appdoc::Application.routes.draw do
     get 'billing'
   end
   
-  get "dashboard/index"
+  get "dashboard/index", :as => "dashboard"
 
   match "ajax/:action(/:id)", :controller => "ajax", :via => [:get, :post]
   get "signup" => "signup#index", :as => "signup"
