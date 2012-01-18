@@ -6,6 +6,8 @@
           %a.close{:href => "#"} x
           %p #{msg}
       = form_tag sessions_path, {:class => "form-stacked"} do
+        - if params[:next]
+          %input{:type => "hidden", :name => "next", :value => params[:next]}
         %fieldset
           %legend Login
           .clearfix

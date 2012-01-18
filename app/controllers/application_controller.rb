@@ -7,9 +7,15 @@ class ApplicationController < ActionController::Base
     raise ActionController::RoutingError.new('This is not the page you are looking for.')
   end
   
+  def require_feeds_login
+    unless current_user
+      redirect_to login_url+"?next=/feeds/dashboard"
+    end
+  end
+  
   def require_login
     unless current_user
-      redirect_to login_url and return
+      redirect_to login_url+"?next=/dashboard" and return
     end
   end
   
