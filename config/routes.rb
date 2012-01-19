@@ -17,7 +17,7 @@ Appdoc::Application.routes.draw do
       end
     end
     resources :subscribers do
-      member do
+      collection do
         get 'lists'
       end
     end
