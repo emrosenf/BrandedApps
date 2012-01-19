@@ -10,6 +10,8 @@ class Subscriber < ActiveRecord::Base
   validates_presence_of :email, :on => :create
   validates_presence_of :password, :on => :create
   
+  has_many :list_subscribers, :dependent => :destroy
+  has_many :lists, :through => :list_subscribers
   has_many :subscriber_infos
   validates_format_of :token, :with => /^[a-f0-9]{8}\s[a-f0-9]{8}\s[a-f0-9]{8}\s[a-f0-9]{8}\s[a-f0-9]{8}\s[a-f0-9]{8}\s[a-f0-9]{8}\s[a-f0-9]{8}$/,
     :allow_nil => true

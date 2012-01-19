@@ -1,4 +1,7 @@
 class Api::SubscribersController < ApplicationController
+  
+  before_filter :find_subscriber, :except => [:create]
+  
   def create
     retVal = {:status => 0}
     unless params[:email]
@@ -32,4 +35,19 @@ class Api::SubscribersController < ApplicationController
   def show
     
   end
+  
+  def lists
+    lists = @subscriber.lists
+    render :json => {:status => 1, :lists => lists}
+  end
+  
+  
+  private
+    def find_subscriber
+      @subscriber = Subscriber.find_by_access_token params[:access_token]
+      unless @subscriber and params[:access_token]
+        render :json => {:status => 0, :error => "You have entered an invalid access token"} and return
+      end
+    end
+  
 end
