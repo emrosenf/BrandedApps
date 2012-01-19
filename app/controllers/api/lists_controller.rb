@@ -1,4 +1,5 @@
 class Api::ListsController < ApplicationController
+  before_filter :find_subscriber, :except => [:create]
   
 a=  <<ENDL
   X information about a list
@@ -19,16 +20,13 @@ ENDL
   
   def subscribe
     list = List.find_by_id params[:id]
-    subscriber_id = params[:subscriber_id]
-    subscriber = Subscriber.find_by_id subscriber_id
-    
     retVal = {:status => 0}
     
-    if subscriber
-      if subscriber.subscribes_to? list
+    if @subscriber
+      if @subscriber.subscribes_to? list
         retVal[:error] = "Subscriber already subscribes to this list"
       else
-        list.subscribe subscriber
+        list.subscribe @subscriber
         retVal[:status] = 1
       end
     else
@@ -40,12 +38,10 @@ ENDL
   
   def unsubscribe
     list = List.find_by_id params[:id]
-    subscriber_id = params[:subscriber_id]
-    subscriber = Subscriber.find_by_id subscriber_id
     retVal = {:status => 0}
     
-    if subscriber
-      if subscriber.subscribes_to? list
+    if @subscriber
+      if @subscriber.subscribes_to? list
         list.unsubscribe subscriber
         retVal[:status] = 1
       else
@@ -72,5 +68,13 @@ ENDL
     retVal = {:name => l.name, :description => l.description, :list_id => l.id, :owner => l.user.name}
     render :json => retVal
   end
+  
+  private
+     def find_subscriber
+       @subscriber = Subscriber.find_by_access_token params[:access_token]
+       unless @subscriber and params[:access_token]
+         render :json => {:status => 0, :error => "You have entered an invalid access token"} and return
+       end
+     end
   
 end
