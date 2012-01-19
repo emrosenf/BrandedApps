@@ -5,6 +5,8 @@ class List < ActiveRecord::Base
   has_many :subscribers, :through => :list_subscribers
   has_many :notifications, :class_name => "ListNotification", :order => "created_at DESC"
   
+  scope :active_feeds, :conditions => "user_id IS NOT NULL"
+  
   #subscriber.subscribes_to? list
   
   def subscribe(subscriber)

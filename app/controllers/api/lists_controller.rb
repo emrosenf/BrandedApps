@@ -59,7 +59,7 @@ ENDL
   end
   
   def index
-    lists = List.all
+    lists = List.active_feeds
     arr = []
     lists.each do |l|
       arr << {:name => l.name, :list_id => l.id}
