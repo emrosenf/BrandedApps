@@ -2,6 +2,13 @@ class Subscriber < ActiveRecord::Base
   # A subscriber is a patron of one of our customers
   # who downloads a branded app and then may choose to 
   # receive push notifications
+  has_secure_password
+  
+  attr_accessible :email, :password
+  
+  validates_uniqueness_of :email
+  validates_presence_of :email, :on => :create
+  validates_presence_of :password, :on => :create
   
   has_many :subscriber_infos
   validates_format_of :token, :with => /^[a-f0-9]{8}\s[a-f0-9]{8}\s[a-f0-9]{8}\s[a-f0-9]{8}\s[a-f0-9]{8}\s[a-f0-9]{8}\s[a-f0-9]{8}\s[a-f0-9]{8}$/,
