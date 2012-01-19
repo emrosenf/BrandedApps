@@ -3,7 +3,9 @@ class Subscriber < ActiveRecord::Base
   # who downloads a branded app and then may choose to 
   # receive push notifications
   
-  validates_format_of :token, :with => /^[a-f0-9]{8}\s[a-f0-9]{8}\s[a-f0-9]{8}\s[a-f0-9]{8}\s[a-f0-9]{8}\s[a-f0-9]{8}\s[a-f0-9]{8}\s[a-f0-9]{8}$/
+  has_many :subscriber_infos
+  validates_format_of :token, :with => /^[a-f0-9]{8}\s[a-f0-9]{8}\s[a-f0-9]{8}\s[a-f0-9]{8}\s[a-f0-9]{8}\s[a-f0-9]{8}\s[a-f0-9]{8}\s[a-f0-9]{8}$/,
+    :allow_nil => true
   
   # Stores the token (Apple's device ID) of the iPhone (device).
   #

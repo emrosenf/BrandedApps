@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/Fixtures.html
+
+one:
+  subscriber: 
+  email: MyString
+  phone: MyString
+  platform: 1
+  token: MyString
+
+two:
+  subscriber: 
+  email: MyString
+  phone: MyString
+  platform: 1
+  token: MyString
