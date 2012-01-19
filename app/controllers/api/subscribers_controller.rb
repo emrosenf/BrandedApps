@@ -8,13 +8,22 @@ class Api::SubscribersController < ApplicationController
       retVal[:error] = "No password given"
     end
     unless retVal[:error]
-      s = Subscriber.new
-      s.email = params[:email]
-      s.password = params[:password]
-      if s.save
-        retVal[:status] = 1
+      s = Subscriber.find_by_email params[:email]
+      if s
+        if s.authenticate params[:password]
+          retVal[:status] = 1
+          retVal[:access_token] = s.access_token
+        else
+          retVal[:error] = "User with this email address already exists, but the password you entered is incorrect."
+        end
       else
-        retVal[:error] = "Unable to create account"
+        s = Subscriber.new(:email => params[:email], :password => params[:password])
+        if s.save
+          retVal[:status] = 1
+          retVal[:access_token] = s.access_token
+        else
+          retVal[:error] = "Unable to create account"
+        end
       end
     end
     render :json => retVal
