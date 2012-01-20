@@ -39,4 +39,4 @@
               - @notifications.each do |noty|
                 %tr
                   %td #{noty.alert}
-                  %td #{noty.sent_at.to_s(:quick)}
+                  %td #{noty.sent_at.nil? ? "Pending" : noty.sent_at.to_s(:quick)}
