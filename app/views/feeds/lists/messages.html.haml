@@ -19,7 +19,7 @@
             %p #{msg}
         .page-header
           %h2 Messages
-          = form_tag(messages_create_app_path, {:class => "form-stacked", :method => "POST"}) do
+          = form_tag(messages_feeds_list_path, {:class => "form-stacked", :method => "POST"}) do
             = hidden_field_tag :type, "group"
             %fieldset
               .clearfix

@@ -5,6 +5,7 @@ Appdoc::Application.routes.draw do
     get "dashboard" => "dashboard#index", :as => "dashboard"
     resources :users
     resources :lists do 
+      post "messages" => "lists#create_message", :on => :member
       get "messages", :on => :member
     end
   end
