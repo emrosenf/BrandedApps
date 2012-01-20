@@ -65,8 +65,17 @@ ENDL
   
   def show
     l = List.find_by_id params[:id]
-    retVal = {:name => l.name, :description => l.description, :list_id => l.id, :owner => l.user.name}
+    retVal = {:status => 0}
+    if list
+      subscribed = @subscriber.subscribes_to?(l) ? 1 : 0
+      retVal.merge!({:name => l.name, :description => l.description, 
+        :list_id => l.id, :owner => l.user.name, :subscribed => subscribed})
+    else
+      retVal[:error] = "Invalid list id"
+    end
+    
     render :json => retVal
+
   end
   
   private
