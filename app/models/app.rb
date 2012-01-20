@@ -8,6 +8,8 @@ class App < ActiveRecord::Base
   has_many :list_notifications, :dependent => :destroy
   has_many :unsent_list_notifications, :class_name => "ListNotification", :conditions => 'sent_at is null'
   
+  scope :eligible_for_branding, :conditions => "canvas_file_name IS NOT NULL"
+  
   has_attached_file :canvas, {}.merge(PAPERCLIP_STORAGE_OPTIONS)
   
   def cert
