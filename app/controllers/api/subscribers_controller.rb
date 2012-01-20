@@ -3,16 +3,25 @@ class Api::SubscribersController < ApplicationController
   before_filter :find_subscriber, :except => [:create]
   
   def add_contact_info
-    info = SubscriberInfo.new
-    info.subscriber = @subscriber
+    infos = @subscriber.subscriber_infos
     retVal = {:status => 0}
     if params[:iphone_token]
-      info.platform = 0
-      info.token = params[:iphone_token]
-      retVal[:type] = "iphone"
+      matches = infos.select{|info| info.token == params[:iphone_token]}
+      if matches.length > 0
+        retVal[:error] = "Subscriber already has this token"
+      end
     end
-    if info.save
-      retVal[:status] = 1
+    unless retVal[:error]
+      info = SubscriberInfo.new
+      info.subscriber = @subscriber
+      if params[:iphone_token]
+        info.platform = 0
+        info.token = params[:iphone_token]
+        retVal[:type] = "iphone"
+      end
+      if info.save
+        retVal[:status] = 1
+      end
     end
     render :json => retVal
   end

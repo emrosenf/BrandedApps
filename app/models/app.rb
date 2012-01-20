@@ -45,9 +45,9 @@ class App < ActiveRecord::Base
                   conn.write(raw)
                   Rails.logger.info "Wrote to subscriber #{info.token} with message length: #{raw.length}"  
                 end
-                Rails.logger.info lnoty.apple_hash
-                Rails.logger.info lnoty.to_apple_json
-                Rails.logger.info raw.to_s
+                #Rails.logger.info lnoty.apple_hash
+                #Rails.logger.info lnoty.to_apple_json
+                #Rails.logger.info raw.to_s
               end
             rescue => e
               Rails.logger.info "Cannot send list notification ##{lnoty.id}: #{e.message}\n #{e.backtrace}"
