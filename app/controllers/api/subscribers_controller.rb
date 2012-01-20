@@ -2,6 +2,21 @@ class Api::SubscribersController < ApplicationController
   
   before_filter :find_subscriber, :except => [:create]
   
+  def add_contact_info
+    info = SubscriberInfo.new
+    info.subscriber = @subscriber
+    retVal = {:status => 0}
+    if params[:iphone_token]
+      info.platform = 0
+      info.token = params[:iphone_token]
+      retVal[:type] = "iphone"
+    end
+    if info.save
+      retVal[:status] = 1
+    end
+    render :json => retVal
+  end
+  
   def create
     retVal = {:status => 0}
     unless params[:email]

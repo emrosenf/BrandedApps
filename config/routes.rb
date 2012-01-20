@@ -19,6 +19,7 @@ Appdoc::Application.routes.draw do
     resources :subscribers do
       collection do
         get 'lists'
+        post 'add_contact_info'
       end
     end
     resources :users do
