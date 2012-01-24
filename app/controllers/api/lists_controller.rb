@@ -36,6 +36,10 @@ ENDL
     render :json => retVal
   end
   
+  def categories
+    render :json => ListCategory.all
+  end
+  
   def unsubscribe
     list = List.find_by_id params[:id]
     retVal = {:status => 0}

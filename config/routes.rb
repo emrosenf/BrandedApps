@@ -16,6 +16,9 @@ Appdoc::Application.routes.draw do
         post 'subscribe'
         post 'unsubscribe'
       end
+      collection do
+        get 'categories'
+      end
     end
     resources :subscribers do
       collection do

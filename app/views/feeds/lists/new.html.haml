@@ -33,5 +33,9 @@
                         %option{:value => f} #{f}
                         
                     %span.help-block How frequently you intend to send messages to this list
+                .clearfix
+                  %label Category
+                  .input
+                    = select("category", "", ListCategory.all.collect {|p| [ p.name, p.id ] }, {:prompt => 'Select Category'}, {:name => "category"})
               .actions
                 %button.btn.primary{:type => "submit"} Create List!
