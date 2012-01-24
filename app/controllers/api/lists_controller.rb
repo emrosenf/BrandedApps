@@ -36,6 +36,14 @@ ENDL
     render :json => retVal
   end
   
+  def category_listing
+    arr = List.find_all_by_category_id params[:id]
+    unless arr
+      arr = []
+    end
+    render :json => arr
+  end
+  
   def categories
     render :json => ListCategory.all
   end

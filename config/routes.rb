@@ -18,6 +18,7 @@ Appdoc::Application.routes.draw do
       end
       collection do
         get 'categories'
+        match 'categories/(:id)' => "lists#category_listing"
       end
     end
     resources :subscribers do
