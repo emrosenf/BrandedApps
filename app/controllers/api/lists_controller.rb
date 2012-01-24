@@ -70,7 +70,7 @@ ENDL
     lists = List.active_feeds
     arr = []
     lists.each do |l|
-      arr << {:name => l.name, :list_id => l.id}
+      arr << {:name => l.name, :list_id => l.id, :description => l.description}
     end
     render :json => arr
   end
@@ -79,7 +79,8 @@ ENDL
     l = List.find_by_id params[:id]
     if l 
       subscribed = @subscriber.subscribes_to?(l) ? 1 : 0
-      retVal = {:name => l.name, :frequency => l.frequency, :description => l.description, :list_id => l.id, :owner => l.user.name, :status => 1, :subscribed => subscribed}
+      retVal = {:name => l.name, :description => l.description, :list_id => l.id, :owner => l.user.name, 
+        :status => 1, :subscribed => subscribed, :frequency => l.frequency}
     else
       retVal = {:status => 0, :error => "Invalid list id"}
     end
