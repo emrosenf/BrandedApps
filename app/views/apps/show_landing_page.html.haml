@@ -1,0 +1,40 @@
+.container{:id => params[:action]}
+  .content
+    .row
+      .span4
+        %h3 Links
+        %a.btn.primary.large{:href => signup_path} Make Your Own
+      .span12
+        #flash-messages
+          - flash.each do |name, msg|
+            .alert-message.fade.in{:class => name, "data-alert" => "alert"}
+              %a.close{:href => "#"} x
+              %p #{msg}
+        .page-header
+          %h2 #{@instance.business_name}'s Application
+          .row
+            .span5
+              #app-configuration-small
+                = image_tag @instance.app.canvas, {:width => "256", :class => "app-preview"}
+                %span.biz-greeting #{@instance.greeting}
+                %span.biz-name #{@instance.business_name}
+                .biz-logo-holder
+                  = image_tag @instance.banner.url(:thumb), {:class => "biz-logo-thumbnail"}
+            .span7
+              %h3 Instructions
+              %p #{@instance.business_name} created this application just for you! Here's how to install it on your iPhone.
+            
+              %h4 Step 1: Download and install the Application
+              %p
+                Follow
+                = link_to "this link", "http://itunes.apple.com/us/app/id496048021"
+                to download the app on the App Store
+              
+              %h4 Step 2: Enter the activation code
+              %p 
+                The app will ask you for an activation code to make sure that you get #{@instance.business_name}'s version.
+                
+              %h5 #{@instance.code}
+              %p is the activation code.
+              
+              %h4 Step 3: Enjoy!

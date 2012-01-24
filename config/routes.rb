@@ -44,6 +44,8 @@ Appdoc::Application.routes.draw do
     end
   end
   
+  get "/app/:id" => "apps#show_landing_page"
+  
   namespace :settings do
     get 'login'
     get 'profile'
@@ -55,6 +57,7 @@ Appdoc::Application.routes.draw do
   match "ajax/:action(/:id)", :controller => "ajax", :via => [:get, :post]
   get "signup" => "signup#index", :as => "signup"
   
+  get "sponsors" => "signup#sponsors"
   post "signup/create" => "signup#create", :as => "signup_create"
   get "signup/choose" => "signup#choose", :as => "signup_choose"
   get "logout" => "sessions#destroy", :as => "logout"

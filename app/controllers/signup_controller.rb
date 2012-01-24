@@ -14,4 +14,7 @@ class SignupController < ApplicationController
   def choose
     
   end
+  
+  def sponsors
+  end
 end

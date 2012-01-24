@@ -1,8 +1,8 @@
 class AppsController < ApplicationController
   
   layout 'dashboard'
-  before_filter :require_login, :except => [:register_device]
-  before_filter :get_apps, :except => [:register_device]
+  before_filter :require_login, :except => [:register_device, :show_landing_page]
+  before_filter :get_apps, :except => [:register_device, :show_landing_page]
   
   
   def update_image
@@ -46,6 +46,11 @@ class AppsController < ApplicationController
   
   def show
     
+  end
+  
+  def show_landing_page
+    id = params[:id] || 1
+    @instance = AppInstance.find_by_id id
   end
 
   def messages
