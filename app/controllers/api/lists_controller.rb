@@ -79,7 +79,7 @@ ENDL
     l = List.find_by_id params[:id]
     if l 
       subscribed = @subscriber.subscribes_to?(l) ? 1 : 0
-      retVal = {:name => l.name, :description => l.description, :list_id => l.id, :owner => l.user.name, :status => 1, :subscribed => subscribed}
+      retVal = {:name => l.name, :frequency => l.frequency, :description => l.description, :list_id => l.id, :owner => l.user.name, :status => 1, :subscribed => subscribed}
     else
       retVal = {:status => 0, :error => "Invalid list id"}
     end
