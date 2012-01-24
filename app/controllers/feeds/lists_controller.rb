@@ -22,8 +22,9 @@ class Feeds::ListsController < ApplicationController
   def create_message
     type = params[:type] || render_404
     @list = List.find_by_id params[:id]
+    message = "#{@list.name}: #{params[:alert]}"
     if @list and type == "group"
-      ListNotification.create(:list_id => @list.id, :app_instance_id => 0, :app_id => 3, :alert => params[:alert], :sound => true, :badge => 0)
+      ListNotification.create(:list_id => @list.id, :app_instance_id => 0, :app_id => 3, :alert => message, :sound => true, :badge => 0)
       app = App.find 3
       app.send_all_feed_notifications
     end
