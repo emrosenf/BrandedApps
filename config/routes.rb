@@ -46,6 +46,9 @@ Appdoc::Application.routes.draw do
       post 'messages' => "apps#messages_create", :as => "messages_create"
       post 'register_device' => "apps#register_device"
     end
+    collection do
+      get 'list'
+    end
   end
   
   get "/app/:id" => "apps#show_landing_page"

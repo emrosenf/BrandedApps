@@ -1,8 +1,8 @@
 class AppsController < ApplicationController
   
   layout 'dashboard'
-  before_filter :require_login, :except => [:register_device, :show_landing_page]
-  before_filter :get_apps, :except => [:register_device, :show_landing_page]
+  before_filter :require_login, :except => [:register_device, :show_landing_page, :list]
+  before_filter :get_apps, :except => [:register_device, :show_landing_page, :list]
   
   
   def update_image
@@ -38,6 +38,12 @@ class AppsController < ApplicationController
   
   def complete_setup
     #redirect_to app_path(@instance) unless current_user.status == 1
+  end
+  
+  def list
+    instances = AppInstance.all
+    retval = instances.collect{|a| {:business_name => a.business_name, :code => a.code, :image => a.banner.url(:thumb), :id => a.id}}
+    render :json => retval
   end
   
   def index
