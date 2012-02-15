@@ -4,7 +4,7 @@ class UsersController < ApplicationController
   end
   
   def create
-    required = [:email, :password, :password_confirmation, :app_id, :greeting, :greeting_on, :business_name, :logo_file]
+    required = [:email, :password, :password_confirmation, :app_id, :greeting, :greeting_on, :business_name]
     required.each{|r| render_404 unless params.has_key? r}
     app = App.find(params[:app_id]) || render_404
     @user = User.find_by_email(params[:email])
@@ -23,7 +23,9 @@ class UsersController < ApplicationController
       instance = AppInstance.new
       instance.user = @user
       instance.app = app
-      instance.banner = params[:logo_file]
+      if params[:logo_file]
+        instance.banner = params[:logo_file]
+      end
       syms = [:greeting, :greeting_on, :business_name]
       syms.each {|s| instance.send("#{s.to_s}=", params[s])}
       instance.code = make_code(instance.business_name)
