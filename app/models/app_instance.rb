@@ -27,8 +27,9 @@ class AppInstance < ActiveRecord::Base
   
   after_initialize do
     self.greeting_on = self.greeting_on || 1
-    self.email_on = self.email_on || "1"
-    self.phone_on = self.phone_on || "1"
+    self.email_on = self.email_on || "0"
+    self.twitter_on = self.twitter_on || "0"
+    self.phone_on = self.phone_on || "0"
     self.twitter = self.twitter ? self.twitter.gsub(/@/, '') : ''
     self.phone = self.phone ? self.phone.gsub(/[() -]/, '') : ''
   end
