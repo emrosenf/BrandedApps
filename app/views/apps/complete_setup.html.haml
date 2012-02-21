@@ -17,20 +17,13 @@
       .span6
         = form_tag(finalize_app_path, {:class => "form-stacked", :method => "POST", :enctype => "multipart/form-data"}) do
           %fieldset
-            .clearfix
-              %label Link Address
-              .input
-                %span http://merchcraft.com/l/
-                %input.span3{:style => "display:inline;", :type => "text", :name => "path", :placeholder => "MyBusinessName"}
-                %span.help-block This will be a link that you can send to your customers
-            .clearfix
-              %label Twitter
-              .input
-                .input-prepend
-                  %input.span4{:type=>"text", :name => "twitter", :placeholder => "@accountname"}
-                  %label.add-on.active
-                    = check_box nil, :twitter_on, {:checked => true}
-                %span.help-block If checked, users will be asked to follow you on Twitter.
+            -#
+              .clearfix
+                %label Link Address
+                .input
+                  %span http://merchcraft.com/l/
+                  %input.span3{:style => "display:inline;", :type => "text", :name => "path", :placeholder => "MyBusinessName"}
+                  %span.help-block This will be a link that you can send to your customers
             .clearfix
               %label Contact E-Mail Address
               .input
@@ -44,9 +37,25 @@
               .input
                 .input-prepend
                   %input.span4{:type=>"text", :name => "phone", :placeholder => "123-456-7890"}
-                  %label.add-on.active
-                    = check_box nil, :phone_on, {:checked => true}
+                  %label.add-on
+                    = check_box nil, :phone_on, {:checked => false}
                 %span.help-block If checked, users will be able to call this number.
+            .clearfix
+              %label Twitter
+              .input
+                .input-prepend
+                  %input.span4{:type=>"text", :name => "twitter", :placeholder => "@accountname"}
+                  %label.add-on
+                    = check_box nil, :twitter_on, {:checked => false}
+                %span.help-block If checked, users will be asked to follow you on Twitter.
+            .clearfix
+              %label Website
+              .input
+                .input-prepend
+                  %input.span4{:type=>"text", :name => "website", :placeholder => "http://mywebsite.com"}
+                  %label.add-on
+                    = check_box nil, :website_on, {:checked => false}
+                %span.help-block If checked, users will be provided a link to your website
             .clearfix
               %label Business Address
               .input

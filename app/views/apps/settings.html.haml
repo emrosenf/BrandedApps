@@ -70,14 +70,6 @@
                 .span7
                   = form_tag(app_path, {:class => "form-stacked", :method => "PUT", :enctype => "multipart/form-data"}) do
                     .clearfix
-                      %label Twitter
-                      .input
-                        .input-prepend
-                          %input.span4{:type=>"text", :name => "twitter", :placeholder => "@accountname", :value => @instance.twitter.format_twitter}
-                          %label.add-on{:class => @instance.twitter_on.checkbox_class}
-                            = check_box nil, :twitter_on, {:checked => @instance.twitter_on.is_checked?}
-                        %span.help-block If checked, users will be asked to follow you on Twitter.
-                    .clearfix
                       %label Contact E-Mail Address
                       .input
                         .input-prepend
@@ -93,6 +85,22 @@
                           %label.add-on{:class => @instance.phone_on.checkbox_class}
                             = check_box nil, :phone_on, {:checked => @instance.phone_on.is_checked?}
                         %span.help-block If checked, users will be able to call this number.
+                    .clearfix
+                      %label Twitter
+                      .input
+                        .input-prepend
+                          %input.span4{:type=>"text", :name => "twitter", :placeholder => "@accountname", :value => @instance.twitter.format_twitter}
+                          %label.add-on{:class => @instance.twitter_on.checkbox_class}
+                            = check_box nil, :twitter_on, {:checked => @instance.twitter_on.is_checked?}
+                        %span.help-block If checked, users will be asked to follow you on Twitter.
+                    .clearfix
+                      %label Website
+                      .input
+                        .input-prepend
+                          %input.span4{:type=>"text", :name => "website", :placeholder => "http://mywebsite.com", :value => @instance.website}
+                          %label.add-on{:class => @instance.website_on.checkbox_class}
+                            = check_box nil, :website_on, {:checked => @instance.website_on.is_checked?}
+                        %span.help-block If checked, users will be provided a link to your website
                     .clearfix
                       %label Business Address
                       .input
