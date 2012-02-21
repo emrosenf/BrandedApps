@@ -56,6 +56,7 @@ class AppsController < ApplicationController
   
   def show_landing_page
     id = params[:id] || (redirect_to home_path and return)
+    id = id.gsub(/-/, ' ')
     @instance = AppInstance.find_by_code id
   end
 

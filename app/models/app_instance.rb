@@ -41,6 +41,11 @@ class AppInstance < ActiveRecord::Base
     self.app.send_all_notifications
   end
   
+  def app_link
+    code = self.code.gsub(/ /, '-')
+    "http://appdoc.herokuapp.com/app/#{code}"
+  end
+  
   def update_settings(params)
     syms = [:business_name, :greeting, :greeting_on, :twitter_on, :phone_on, :email_on, :email, :address, :city, :zip, :state, :website, :website_on]
     syms.each {|s| self.send("#{s.to_s}=", params[s]) if params[s]}

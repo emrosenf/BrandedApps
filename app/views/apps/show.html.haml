@@ -32,16 +32,16 @@
               %h3 Instructions
               %p This will teach you to walk your customers through the process of downloading and installing your application
               
-              %h4 Step 1: Go to the app store
-              %p Click the blue "App Store" icon on the iPhone
+              %h4 Step 1: Find the app in the App Store
+              %p 
+                Option 1: Email your clients this link:
+                %a{:href => @instance.app_link} #{@instance.app_link}
+              %p Option 2: Click the blue "App Store" icon on the iPhone to enter the App Store. Click the "Search" button on the bottom-right of the App Store screen. Then, tap the search bar that will appear at the top of the screen. Type in "App Name", and click the blue "Search" button at the bottom-right of the screen.
               
-              %h4 Step 2: Search for the app
-              %p Click the "Search" button on the bottom-right of the App Store screen. Then, tap the search bar that will appear at the top of the screen. Type in "App Name", and click the blue "Search" button at the bottom-right of the screen.
-              
-              %h4 Step 3: Install the application
+              %h4 Step 2: Install the application
               %p Go through the normal process of installing this free application. Launch the app when the download completes.
               
-              %h4 Step 4: Enter your business nickname
+              %h4 Step 3: Enter your business nickname
               %p 
                 The app will prompt the user to search for and select the business that sent them the app. Tell your customers to enter:
                 %b #{@instance.code}
