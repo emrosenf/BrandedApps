@@ -14,8 +14,8 @@ class AppInstance < ActiveRecord::Base
   #end
   
   serializeable :params, {:business_name => '', :greeting => '', :greeting_on => true, 
-    :twitter_on => true, :twitter => '', :phone_on => true, :phone => '', :email_on => true,
-    :email => '', :address => '', :city => '', :state => '', :website => '', :zip => ''}
+    :twitter_on => false, :twitter => '', :phone_on => false, :phone => '', :email_on => true,
+    :email => '', :address => '', :city => '', :state => '', :website => '', :website_on => false, :zip => ''}
     
     
   before_save do
