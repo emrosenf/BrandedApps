@@ -42,7 +42,7 @@ class AppInstance < ActiveRecord::Base
   end
   
   def app_link
-    code = self.code.gsub(/ /, '-')
+    code = self.code.gsub(/ /, '_')
     "http://appdoc.herokuapp.com/app/#{code}"
   end
   
