@@ -55,8 +55,8 @@ class AppsController < ApplicationController
   end
   
   def show_landing_page
-    id = params[:id] || 1
-    @instance = AppInstance.find_by_id id
+    id = params[:id] || (redirect_to home_path and return)
+    @instance = AppInstance.find_by_code id
   end
 
   def messages
